@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Navigation List</h1>
+      </div>
+    </section>
+
+    <section>
+      <%= link_to "Create New Navigation", cms.new_admin_navigation_path, :class => "btn btn-primary pull-right", :style => "margin-bottom:30px" %>
+
+      <table class="table table-striped">
+        <tr>
+          <th>position</th>
+          <th>name</th>
+          <th>link</th>
+          <th>link_title</th>
+          <th>hidden</th>
+          <th>updated at</th>
+          <th>created at</th>
+          <th>actions</th>
+        </tr>
+        <% @navigations.each do |navigation| %>
+          <tr>
+            <td><%= navigation.position %></td>
+            <td><%= navigation.name %></td>
+            <td><%= link_to navigation.link, navigation.link, :target => "_blank" %></td>
+            <td><%= navigation.link_title %></td>
+            <td><%= navigation.is_hidden? ? "Yes" : "No" %></td>
+            <td><%= navigation.updated_at %></td>
+            <td><%= navigation.created_at %></td>
+            <td>
+              <%= link_to "Edit", cms.edit_admin_navigation_path(navigation), :class => "btn" %>
+              <%= link_to "Delete", cms.admin_navigation_path(navigation), :class => "btn btn-danger", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>
