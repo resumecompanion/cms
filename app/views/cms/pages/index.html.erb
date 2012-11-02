@@ -2,4 +2,5 @@
   <%= link_to "Login", cms.new_cms_user_session_path %>
 <% else %>
   Hello, <%= current_cms_user.nickname %> <%= link_to "Logout", cms.destroy_cms_user_session_path, :method => "delete" %>
+  <% if current_cms_user.is_admin? %> | <%= link_to "admin", cms.admin_users_path %> <% end %>
 <% end %>

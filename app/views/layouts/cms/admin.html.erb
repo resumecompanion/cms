@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cms</title>
+  <%= stylesheet_link_tag    "cms/admin", :media => "all" %>
+  <%= javascript_include_tag "cms/admin" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "CMS Admin", cms.root_path, :class => "brand" %>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class=""><%= link_to "Setting", "" %></li>
+          <li class="<%= "active" if params[:controller] == "cms/admin/users" %>"><%= link_to "User", cms.admin_users_path %></li>
+          <li class=""><%= link_to "Navigation", "" %></li>
+          <li class=""><%= link_to "Image", "" %></li>
+          <li class=""><%= link_to "Page", "" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>

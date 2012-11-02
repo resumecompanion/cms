@@ -1,0 +1,10 @@
+<%= field_set_tag "Login Information" do %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+<% end %>
+
+<%= field_set_tag "User Attributes" do %>
+  <%= f.input :nickname %>
+  <%= f.input :is_admin, :label => "Admin", :as => "select", :include_blank => false %>
+<% end %>
