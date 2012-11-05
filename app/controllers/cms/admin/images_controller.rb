@@ -1,7 +1,7 @@
 module Cms
   class Admin::ImagesController < ::Cms::ApplicationController
     layout "cms/admin"
-
+    before_filter :require_admin
     before_filter :find_file, :only => [:show, :edit, :update, :destroy]
 
     def index

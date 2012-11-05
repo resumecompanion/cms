@@ -2,6 +2,7 @@ module Cms
   class Admin::NavigationsController < ::Cms::ApplicationController
     layout "cms/admin"
 
+    before_filter :require_admin
     before_filter :find_navigation, :only => [:edit, :update, :destroy]
 
     def index

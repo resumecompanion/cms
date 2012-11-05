@@ -2,6 +2,7 @@ module Cms
   class Admin::UsersController < ::Cms::ApplicationController
     layout "cms/admin"
 
+    before_filter :require_admin
     before_filter :find_user, :only => [:show, :edit, :update, :destroy]
 
     def index
