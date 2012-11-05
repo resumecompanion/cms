@@ -18,7 +18,7 @@
   <div class="span2" style="height:170px;">
     <%= link_to image_tag(file.image.url(:thumb), :title => file.title), cms.admin_image_path(file) %>
     <div>
-      <%= file.user.try(:nickname) %>
+      Created by <%= file.user.try(:nickname) %>
     </div>
     <div class="action">
       <%= link_to "Edit", cms.edit_admin_image_path(file) %>
