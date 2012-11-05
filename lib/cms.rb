@@ -1,6 +1,8 @@
 require 'devise'
 require 'simple_form'
 require 'compass-rails'
+require 'carrierwave'
+require 'rmagick'
 
 require "cms/engine"
 require 'cms/generators/install_generator'

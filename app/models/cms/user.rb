@@ -6,5 +6,7 @@ module Cms
     attr_accessible :nickname, :email, :password, :password_confirmation, :remember_me
 
     validates :email, :password, :password_confirmation, :nickname, :presence => true
+
+    has_many :files
   end
 end

@@ -9,6 +9,8 @@ Cms::Engine.routes.draw do
   namespace :admin do
     resources :users
     resources :navigations, :except => [:show]
+    resources :images
+    root :to => 'users#index'
   end
 
   root :to => 'pages#index'

@@ -16,8 +16,8 @@
           <ul class="nav">
             <li class=""><%= link_to "Setting", "" %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/users" %>"><%= link_to "User", cms.admin_users_path %></li>
-            <li class="<%= "active" if params[:controller] == "cms/admin/navigation" %>"><%= link_to "Navigation", cms.admin_navigations_path %></li>
-            <li class=""><%= link_to "Image", "" %></li>
+            <li class="<%= "active" if params[:controller] == "cms/admin/navigations" %>"><%= link_to "Navigation", cms.admin_navigations_path %></li>
+            <li class="<%= "active" if params[:controller] == "cms/admin/images" %>"><%= link_to "Image", cms.admin_images_path %></li>
             <li class=""><%= link_to "Page", "" %></li>
           </ul>
         </div>

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Upload New Image</h1>
+      </div>
+    </section>
+
+    <%= simple_form_for @file, :url => cms.admin_images_path(@file), :method => "post" do |f| %>
+      <%= f.input :title %>
+      <%= f.input :image, :as => :file %>
+
+      <div class="form-actions">
+        <%= f.submit "Upload Image", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", cms.admin_navigations_path, :class => "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

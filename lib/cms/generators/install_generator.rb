@@ -15,6 +15,8 @@ module Cms
         copy_file "migrations/devise_create_cms_users.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_devise_create_cms_users.rb"
         sleep 0.1
         copy_file "migrations/create_cms_navigations.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_cms_navigations.rb"
+        sleep 0.1
+        copy_file "migrations/create_cms_files.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_cms_files.rb"
       end
 
       # def show_readme

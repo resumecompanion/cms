@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Edit Image - <%= @file.title %> (Created by <%= @file.user.try(:nickname)%>)</h1>
+      </div>
+    </section>
+
+    <%= simple_form_for @file, :url => cms.admin_image_path(@file), :method => "put" do |f| %>
+      <%= f.input :title %>
+      <%= image_tag @file.image.url %>
+
+      <div class="form-actions">
+        <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", cms.admin_navigations_path, :class => "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

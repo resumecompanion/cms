@@ -6,9 +6,11 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails"
-gem "devise"
-gem "simple_form"
+gem 'jquery-rails'
+gem 'devise'
+gem 'simple_form'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.0'
