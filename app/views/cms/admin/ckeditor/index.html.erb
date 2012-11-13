@@ -1,0 +1,21 @@
+<div class="row">
+
+<% @files.each_with_index do |file, i| %>
+  <div style="float:left">
+    <%= link_to image_tag(file.image.url(:thumb), :title => file.title), "#", :data => { :url => file.image.url(:large) }, :class => "add-image" %>
+  </div>
+<% end %>
+</div>
+
+<div class="row" style="text-align:center">
+  <%= paginate @files %>
+</div>
+
+<script type="text/javascript">
+  $(".add-image").click(function(){
+    var url = $(this).attr("data-url");
+    window.opener.CKEDITOR.tools.callFunction(<%= params[:CKEditorFuncNum] %>, url);
+    window.close();
+    return false;
+  });
+</script>

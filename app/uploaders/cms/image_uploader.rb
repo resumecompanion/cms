@@ -36,7 +36,7 @@ class Cms::ImageUploader < ::CarrierWave::Uploader::Base
   # end
 
   version :large do
-    process :resize_to_fit => [620, 1000]
+    process :resize_to_limit => [620, nil]
   end
 
   # Create different versions of your uploaded files:

@@ -16,7 +16,7 @@
   <%= f.input :parent_id, :as => :hidden, :input_html => { :id => "parent-id", :value => (f.object.parent_id.blank? ? nil : f.object.parent_id) } %>
 <% end %>
 
-<%= f.input :content, :input_html => { :id => "content-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path } } %>
+<%= f.input :content, :input_html => { :id => "content-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path(:user_id => current_cms_user.id) } } %>
 
 <%= f.input :meta_description, :input_html => { :class => "span12" } %>
 <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
