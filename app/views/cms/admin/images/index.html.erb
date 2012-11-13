@@ -15,11 +15,11 @@
   <% if (i % 6) == 0 %>
     <div class="row" style="margin-bottom:30px">
   <% end %>
-  <div class="span2">
+  <div class="span2" style="position:relative;">
     <%= link_to image_tag(file.image.url(:thumb), :title => file.title), cms.admin_image_path(file) %>
-    <div class="action">
-      <%= link_to "Edit", cms.edit_admin_image_path(file) %>
-      <%= link_to "Delete", cms.admin_image_path(file), :class => "pull-right", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
+    <div class="action" style="position:absolute;bottom:0;width:100%">
+      <%= link_to "Edit", cms.edit_admin_image_path(file), :class => "btn btn-mini" %>
+      <%= link_to "Delete", cms.admin_image_path(file), :class => "btn btn-mini btn-danger pull-right", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
     </div>
   </div>
   <% if (i % 6) == 5 || @files.length == (i + 1) %>

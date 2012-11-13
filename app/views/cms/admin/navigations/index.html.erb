@@ -30,8 +30,8 @@
             <td><%= navigation.updated_at %></td>
             <td><%= navigation.created_at %></td>
             <td>
-              <%= link_to "Edit", cms.edit_admin_navigation_path(navigation), :class => "btn" %>
-              <%= link_to "Delete", cms.admin_navigation_path(navigation), :class => "btn btn-danger", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
+              <%= link_to "Edit", cms.edit_admin_navigation_path(navigation), :class => "btn btn-mini" %>
+              <%= link_to "Delete", cms.admin_navigation_path(navigation), :class => "btn btn-mini btn-danger", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
             </td>
           </tr>
         <% end %>
