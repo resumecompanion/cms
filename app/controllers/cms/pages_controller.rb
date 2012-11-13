@@ -4,7 +4,7 @@ module Cms
     end
 
     def show
-      @page = Cms::Page.find_by_slug(params[:id])
+      @page = Cms::Page.where(:slug => params[:id], :is_published => true).first
     end
   end
 end

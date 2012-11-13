@@ -1,7 +1,7 @@
 module Cms
   class Page < ActiveRecord::Base
     attr_accessible :parent_id, :author_id, :position, :title, :slug, :meta_description, :meta_keywords,
-                    :content, :is_published, :published_at, :generate_slug
+                    :content, :is_published, :generate_slug
 
   attr_accessor :generate_slug
 

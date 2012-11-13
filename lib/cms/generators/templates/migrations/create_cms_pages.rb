@@ -11,7 +11,6 @@ class CreateCmsPages < ActiveRecord::Migration
       t.string :meta_keywords
       t.text :content
       t.boolean :is_published, :default => true
-      t.datetime :published_at
       t.integer :old_id
       t.timestamps
     end
