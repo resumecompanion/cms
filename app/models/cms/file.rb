@@ -3,6 +3,7 @@ module Cms
     attr_accessible :image, :title
 
     mount_uploader :image, Cms::ImageUploader
+    paginates_per 48
 
     validates_presence_of :image
 

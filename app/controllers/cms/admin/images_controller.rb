@@ -5,7 +5,7 @@ module Cms
     before_filter :find_file, :only => [:show, :edit, :update, :destroy]
 
     def index
-      @files = Cms::File.order("id DESC")
+      @files = Cms::File.page(params[:page]).order("id DESC")
     end
 
     def show

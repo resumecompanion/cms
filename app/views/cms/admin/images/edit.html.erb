@@ -7,8 +7,8 @@
     </section>
 
     <%= simple_form_for @file, :url => cms.admin_image_path(@file), :method => "put" do |f| %>
-      <%= f.input :title %>
-      <%= image_tag @file.image.url %>
+      <%= f.input :title, :input_html => { :class => "span8" } %>
+      <%= image_tag @file.image.url(:large) %>
 
       <div class="form-actions">
         <%= f.submit "Save Changes", :class => "btn btn-primary" %>

@@ -15,17 +15,18 @@
   <% if (i % 6) == 0 %>
     <div class="row" style="margin-bottom:30px">
   <% end %>
-  <div class="span2" style="height:170px;">
+  <div class="span2">
     <%= link_to image_tag(file.image.url(:thumb), :title => file.title), cms.admin_image_path(file) %>
-    <div>
-      Created by <%= file.user.try(:nickname) %>
-    </div>
     <div class="action">
       <%= link_to "Edit", cms.edit_admin_image_path(file) %>
       <%= link_to "Delete", cms.admin_image_path(file), :class => "pull-right", :method => "delete", :confirm => "It can't be recoverd, are your sure?" %>
     </div>
   </div>
-  <% if (i % 6) == 5 %>
+  <% if (i % 6) == 5 || @files.length == (i + 1) %>
     </div>
   <% end %>
 <% end %>
+
+<div class="row" style="text-align:center">
+  <%= paginate @files %>
+</div>

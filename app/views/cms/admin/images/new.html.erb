@@ -7,7 +7,7 @@
     </section>
 
     <%= simple_form_for @file, :url => cms.admin_images_path(@file), :method => "post" do |f| %>
-      <%= f.input :title %>
+      <%= f.input :title, :input_html => { :class => "span8" } %>
       <%= f.input :image, :as => :file %>
 
       <div class="form-actions">
