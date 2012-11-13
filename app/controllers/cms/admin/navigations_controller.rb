@@ -6,12 +6,12 @@ module Cms
     before_filter :find_navigation, :only => [:edit, :update, :destroy]
 
     def index
-      @navigations = Cms::Navigation.order("position")
+      @navigations = Cms::Navigation.order("position ASC")
     end
 
     def new
-      @navigation = Cms::Navigation.new
-      @navigation.position = Cms::Navigation.all.size + 1
+      @navigation = Cms::Navigation.new(:position => Cms::Navigation.all.size + 1)
+      @navigations = Cms::Navigation.order("position ASC")
     end
 
     def create
@@ -19,17 +19,20 @@ module Cms
       if @navigation.save
         redirect_to cms.admin_navigations_path
       else
+        @navigations = Cms::Navigation.order("position ASC")
         render :action => :new
       end
     end
 
     def edit
+      @navigations = Cms::Navigation.where("id != ?", @navigation.id).order("position ASC")
     end
 
     def update
       if @navigation.update_attributes(params[:navigation])
         redirect_to cms.admin_navigations_path
       else
+        @navigations = Cms::Navigation.where("id != ?", @navigation.id).order("position ASC")
         render :action => :edit
       end
     end

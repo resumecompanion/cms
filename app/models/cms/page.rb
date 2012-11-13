@@ -3,7 +3,7 @@ module Cms
     attr_accessible :parent_id, :author_id, :position, :title, :slug, :meta_description, :meta_keywords,
                     :content, :is_published, :generate_slug
 
-  attr_accessor :generate_slug
+    attr_accessor :generate_slug
 
     has_many :children, :class_name => "Cms::Page", :foreign_key => :parent_id, :dependent => :destroy
     belongs_to :parent, :class_name => "Cms::Page", :foreign_key => :parent_id

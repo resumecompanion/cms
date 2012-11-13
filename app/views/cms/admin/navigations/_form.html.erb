@@ -2,4 +2,4 @@
 <%= f.input :link %>
 <%= f.input :link_title %>
 <%= f.input :is_hidden, :label => "Hide", :as => "select", :include_blank => false %>
-<%= f.input :position, :as => "hidden" %>
+<%= f.input :append_position, :as => :select, :label => "Append to", :collection => [["- First Item -", 0]].concat(@navigations.map { |navigation| [navigation.name, navigation.position] }), :include_blank => false, :selected => f.object.new_record? ? @navigations.last.position : f.object.position - 1 %>
