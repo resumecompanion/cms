@@ -1,0 +1,23 @@
+<% if pages.size > 0 %>
+  <% if type == "root" %>
+  <ul id="page-list">
+  <% else %>
+  <ul class="children">
+  <% end %>
+  <% pages.each do |page| %>
+    <li class="<%= (page.children_count > 0) ? "folder" : "page" %>">
+      <% if (page.children_count > 0) %>
+        <%= link_to page.title, "#", :class => "open-folder closed", :data => { :url => cms.children_admin_page_path(page.id) } %>
+      <% else %>
+        <%= page.title %> <%= content_tag "b", "(Dreft)" unless page.is_published? %>
+      <% end %>
+
+      (<%= page.author.nickname %>)
+
+      <%= link_to "Delete", cms.admin_page_path(page), :method => "delete", :class => "btn btn-danger btn-mini pull-right" %>
+      <%= link_to "Edit", cms.edit_admin_page_path(page), :class => "btn btn-mini pull-right", :style => "margin-right:10px" %>
+      <%= link_to "Preview", cms.pages_path(page), :target => "_blank", :class => "btn btn-mini btn-primary pull-right", :style => "margin-right:10px" %>
+    </li>
+  <% end %>
+  <ul>
+<% end %>

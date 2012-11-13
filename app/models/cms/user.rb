@@ -8,5 +8,6 @@ module Cms
     validates :email, :password, :password_confirmation, :nickname, :presence => true
 
     has_many :files
+    has_many :pages, :class_name => "Cms::Page", :foreign_key => :author_id
   end
 end

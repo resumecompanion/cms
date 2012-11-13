@@ -1,0 +1,5 @@
+<% if pages.length > 0 %>
+  <div class="parent-id-selector-container">
+    <%= select_tag "parent_id", options_from_collection_for_select(pages, :id, :title, selected), :include_blank => true, :class => "parent-id-selector", :data => { :url => cms.children_selector_admin_pages_path } %>
+  </div>
+<% end %>

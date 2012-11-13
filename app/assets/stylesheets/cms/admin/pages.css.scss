@@ -1,0 +1,16 @@
+#page-list {
+  li {
+    margin-bottom:10px;
+    &.folder {
+      list-style: url(folder.png);
+    }
+
+    &.page {
+      list-style: url(page.png);
+    }
+  }
+
+  .children {
+    padding-top:10px;
+  }
+}

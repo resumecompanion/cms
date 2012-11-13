@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Create New Page</h1>
+      </div>
+    </section>
+
+    <%= simple_form_for @page, :url => cms.admin_pages_path(@page), :method => "post" do |f| %>
+      <%= render "form", :f => f %>
+
+      <div class="form-actions">
+        <%= f.submit "Create Page", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", cms.admin_pages_path, :class => "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

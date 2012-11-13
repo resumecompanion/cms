@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ./admin/plugin/bootstrap.min
+//= require ./plugin/bootstrap.min
+//= require ./admin/pages

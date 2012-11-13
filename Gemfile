@@ -11,6 +11,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'stringex'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.0'

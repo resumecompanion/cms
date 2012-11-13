@@ -1,0 +1,24 @@
+<%= f.input :title, :input_html => { :class => "span12" } %>
+<%= f.input :slug, :hint => " (It'll be generated automatically.)", :input_html => { :class => "span12", :disabled => true } %>
+<%= f.input :author_id, :as => :select, :collection => @users.map { |user| [user.nickname, user.id] }, :include_blank => false, :selected => f.object.new_record? ? current_cms_user.id : f.object.author_id %>
+
+<%= f.input :parent_id, :label => "Parent" do %>
+  <%= render "children_selector", :pages => @roots, :selected => f.object.new_record? ? f.object.parent_id : @parent_ids[0] %>
+
+  <% (@parent_ids.length).times do |i| %>
+    <% if i == (@parent_ids.length - 1) %>
+      <%= render "children_selector", :pages => Cms::Page.where("parent_id = ? and id != ?", f.object.parent_id, f.object.id), :selected => nil %>
+    <% else %>
+      <%= render "children_selector", :pages => Cms::Page.where(:parent_id => @parent_ids[i]), :selected => @parent_ids[i+1] %>
+    <% end %>
+  <% end if @parent_ids.present? %>
+
+  <%= f.input :parent_id, :as => :hidden, :input_html => { :id => "parent-id", :value => (f.object.parent_id.blank? ? nil : f.object.parent_id) } %>
+<% end %>
+
+<%= f.input :content, :input_html => { :id => "content-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path } } %>
+
+<%= f.input :meta_description, :input_html => { :class => "span12" } %>
+<%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
+<%= f.input :is_published, :label => "Published?", :as => :select, :include_blank => false %>
+<%= f.input :published_at %>

@@ -3,7 +3,7 @@
 <head>
   <title>Cms</title>
   <%= stylesheet_link_tag    "cms/admin", :media => "all" %>
-  <%= javascript_include_tag "cms/admin" %>
+  <%= javascript_include_tag "cms/admin", "cms/plugin/ckeditor/init" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +18,7 @@
             <li class="<%= "active" if params[:controller] == "cms/admin/users" %>"><%= link_to "User", cms.admin_users_path %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/navigations" %>"><%= link_to "Navigation", cms.admin_navigations_path %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/images" %>"><%= link_to "Image", cms.admin_images_path %></li>
-            <li class=""><%= link_to "Page", "" %></li>
+            <li class="<%= "active" if params[:controller] == "cms/admin/pages" %>"><%= link_to "Page", cms.admin_pages_path %></li>
           </ul>
         </div>
       </div>
@@ -29,5 +29,6 @@
     <%= yield %>
   </div>
 
+  <%= yield :footer %>
 </body>
 </html>
