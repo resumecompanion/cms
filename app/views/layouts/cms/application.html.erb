@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cms</title>
+  <%= render_cms_page_title(@page.title) %>
+  <%= render_cms_meta_description(@page.meta_description) %>
+  <%= render_cms_meta_keywords(@page.meta_keywords) %>
   <%= stylesheet_link_tag    "cms/application", :media => "all" %>
   <%= javascript_include_tag "cms/application" %>
   <%= csrf_meta_tags %>
@@ -19,7 +21,7 @@
 
   <div id="navigation">
     <ul>
-      <% Cms::Navigation.all.each do |navigation| %>
+      <% Cms::Navigation.where(:is_hidden => false).each do |navigation| %>
         <li><%= link_to navigation.name, navigation.link %></li>
       <% end %>
     </ul>

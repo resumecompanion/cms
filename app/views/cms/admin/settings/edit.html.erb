@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Edit Setting - <%= @setting.key %></h1>
+      </div>
+    </section>
+
+    <%= simple_form_for @setting, :url => cms.admin_setting_path(@setting), :method => "put" do |f| %>
+        <%= f.input :value %>
+      <div class="form-actions">
+        <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+        <%= link_to "Cancel", cms.admin_settings_path, :class => "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

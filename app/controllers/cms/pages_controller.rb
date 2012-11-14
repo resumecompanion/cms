@@ -1,6 +1,8 @@
 module Cms
   class PagesController < ApplicationController
     def index
+      url = Cms::Setting.find_by_key("global:index") || "/"
+      redirect_to url.value
     end
 
     def show

@@ -7,6 +7,7 @@ Cms::Engine.routes.draw do
              :path_names => { :sign_out => 'logout', :sign_in => 'login' }
 
   namespace :admin do
+    resources :settings, :only => [:index, :edit, :update]
     resources :users
     resources :navigations, :except => [:show]
     resources :images

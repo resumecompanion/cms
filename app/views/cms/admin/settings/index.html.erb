@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Setting List</h1>
+      </div>
+    </section>
+
+    <section>
+      <table class="table table-striped">
+        <tr>
+          <th>key</th>
+          <th>value</th>
+          <th>description</th>
+          <th>actions</th>
+        </tr>
+        <% @settings.each do |setting| %>
+          <tr>
+            <th><%= setting.key %></th>
+            <td><%= setting.value %></td>
+            <td><%= setting.description %></td>
+            <td>
+              <%= link_to "Edit", cms.edit_admin_setting_path(setting), :class => "btn btn-mini" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>

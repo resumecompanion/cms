@@ -14,7 +14,7 @@
         <%= link_to "CMS Admin", cms.root_path, :class => "brand" %>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class=""><%= link_to "Setting", "" %></li>
+            <li class="<%= "active" if params[:controller] == "cms/admin/settings" %>"><%= link_to "Setting", cms.admin_settings_path %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/users" %>"><%= link_to "User", cms.admin_users_path %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/navigations" %>"><%= link_to "Navigation", cms.admin_navigations_path %></li>
             <li class="<%= "active" if params[:controller] == "cms/admin/images" %>"><%= link_to "Image", cms.admin_images_path %></li>
