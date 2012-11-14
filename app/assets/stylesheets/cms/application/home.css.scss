@@ -1,0 +1,66 @@
+#main {
+  #home {
+    float:left;
+
+    h1 {
+      margin-bottom:20px;
+      font-size:34px;
+      font-weight:bold;
+      span {
+        color:#2686CC;
+      }
+    }
+
+    h2 {
+      margin-bottom:20px;
+      font-size:24px;
+    }
+
+    .category {
+      float:left;
+      margin-bottom:20px;
+      width:300px;
+
+      h3 {
+        position:relative;
+        margin-bottom:5px;
+        padding-left:20px;
+        height:50px;
+        font-size:14px;
+        font-weight:bold;
+        line-height:18px;
+        color:#FFFFFF;
+        background:#999999;
+        span {
+          position:absolute;
+          bottom:7px;
+        }
+      }
+
+      &.left {
+        margin-right:20px;
+      }
+
+      ul {
+        font-size:12px;
+        line-height:20px;
+        list-style-image:url(arrow.png);
+
+        li {
+          margin-left:30px;
+        }
+      }
+    }
+
+    .free-resume-builder-banner {
+      float:left;
+      display:block;
+      margin-bottom:20px;
+      text-indent:-9999px;
+      width:620px;
+      height:140px;
+      background:url(free-resume-builder-banner.png);
+    }
+  }
+
+}

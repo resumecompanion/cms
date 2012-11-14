@@ -1,0 +1,31 @@
+#sidebar {
+  float:left;
+  margin-left:20px;
+  width:300px;
+
+  .banner {
+    margin-bottom:15px;
+    a {
+      display:block;
+      width:300px;
+      height:158px;
+      margin:0 auto;
+    }
+  }
+
+  .links {
+    ul {
+      width:300px;
+      li {
+        padding:9px 0 9px 10px;
+        border-bottom:1px solid #CCCCCC;
+
+        a {
+          font-size:14px;
+          color:#1A3D54;
+        }
+      }
+    }
+  }
+
+}

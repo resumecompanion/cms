@@ -7,22 +7,42 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <% Cms::Navigation.all.each do |navigation| %>
-              <li><%= link_to navigation.name, navigation.link %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+  <div id="header">
+    <div class="content">
+      <%= link_to "Logo", cms.root_path, :class => "logo" %>
+      <p id="website-description">
+        #1 Resource for Resume Tips<br>
+        Resume Examples, Resume Templates and More
+      </p>
     </div>
   </div>
 
-  <div class="container">
+  <div id="navigation">
+    <ul>
+      <% Cms::Navigation.all.each do |navigation| %>
+        <li><%= link_to navigation.name, navigation.link %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="container">
+    <div id="breadcrumb">
+      <% page_ids = @page.all_parent_ids.concat([@page.id]) rescue [] %>
+      <% page_ids.each_with_index do |page_id, i| %>
+        <% page = Cms::Page.find(page_id) %>
+        <% unless (i + 1) == page_ids.length %>
+          <%= link_to page.title, cms.pages_path(page) %> >
+        <% else %>
+          <%= link_to page.title, cms.pages_path(page), :class => "last" %>
+        <% end %>
+      <% end %>
+    </div>
+
     <%= yield %>
+
+    <div id="footer">
+      <p>Copyright © 2009-2012 Resume Companion LLC. All Rights reserved.</p>
+    </div>
   </div>
 
 </body>

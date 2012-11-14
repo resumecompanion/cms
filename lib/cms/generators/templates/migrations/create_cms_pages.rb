@@ -6,6 +6,7 @@ class CreateCmsPages < ActiveRecord::Migration
       t.integer :position, :default => 0
       t.integer :children_count, :default => 0
       t.string :title
+      t.boolean :is_displayed_title, :default => true
       t.string :slug
       t.string :meta_description
       t.string :meta_keywords
