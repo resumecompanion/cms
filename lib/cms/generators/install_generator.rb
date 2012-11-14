@@ -8,7 +8,7 @@ module Cms
       desc "Copy CMS default files"
 
       def copy_initialize
-        copy_file "initializers/cms.rb", "config/initializers/cms.rb"
+        #copy_file "initializers/cms.rb", "config/initializers/cms.rb"
       end
 
       def copy_migration
@@ -21,6 +21,8 @@ module Cms
         copy_file "migrations/create_cms_pages.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_cms_pages.rb"
         sleep 0.1
         copy_file "migrations/create_cms_settings.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_cms_settings.rb"
+        sleep 0.1
+        copy_file "migrations/create_cms_sidebars.rb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%2N")}_create_cms_sidebars.rb"
       end
 
       # def show_readme

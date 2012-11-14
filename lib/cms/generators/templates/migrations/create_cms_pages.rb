@@ -3,6 +3,7 @@ class CreateCmsPages < ActiveRecord::Migration
     create_table :cms_pages do |t|
       t.integer :parent_id
       t.integer :author_id
+      t.integer :sidebar_id
       t.integer :position, :default => 0
       t.integer :children_count, :default => 0
       t.string :title
