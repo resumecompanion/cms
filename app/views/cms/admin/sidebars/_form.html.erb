@@ -1,0 +1,13 @@
+<%= f.input :name %>
+<%= f.input :content, :input_html => { :id => "sidebar-content-editor", :data => { :broswe => admin_ckeditor_index_path, :upload => admin_ckeditor_index_path(:user_id => current_cms_user.id) } } %>
+<h3>Example:</h3>
+<pre>
+  <%= '<div class="banner">' %>
+  <%= '    Your Can add banner here' %>
+  <%= '</div>' %>
+  <%= '<div class="links">' %>
+  <%= '    <ul>' %>
+  <%= '        <li>You can add link here</li>' %>
+  <%= '    </ul>' %>
+  <%= '</div>' %>
+</pre>

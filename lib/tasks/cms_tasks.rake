@@ -39,6 +39,7 @@ namespace :cms do
       page = Cms::Page.new
       page.parent_id = result[:parent_id]
       page.author_id = 1
+      page.sidebar_id = 1
       page.title = result_attribute[:title]
       page.slug = result_attribute[:slug]
       if result_seo.present?
@@ -84,5 +85,22 @@ namespace :cms do
     setting = Cms::Setting.create(:key => "global:meta_keywords", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
 
     puts "create settings"
+
+    sidebar = Cms::Sidebar.new
+    sidebar.name = "default sidebar"
+    sidebar.content = '
+    <div class="banner">
+      Your Can add banner here
+    </div>
+
+    <div class="links">
+      <ul>
+        <li>You can add link here</li>
+      </ul>
+    </div>
+    '
+    sidebar.save
+
+    puts "create sidebar"
   end
 end

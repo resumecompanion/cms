@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <div class="page-header">
+        <h1>Sidebar List</h1>
+      </div>
+    </section>
+
+    <section>
+      <%= link_to "Create New Sidebar", cms.new_admin_sidebar_path, :class => "btn btn-primary pull-right", :style => "margin-bottom:30px" %>
+
+      <table class="table table-striped">
+        <tr>
+          <th>name</th>
+          <th>content</th>
+          <th>updated at</th>
+          <th>created at</th>
+          <th>actions</th>
+        </tr>
+        <% @sidebars.each do |sidebar| %>
+          <tr>
+            <td><%= sidebar.name %></td>
+            <td><%= sidebar.content %></td>
+            <td><%= sidebar.updated_at %></td>
+            <td><%= sidebar.created_at %></td>
+            <td>
+              <%= link_to "Edit", cms.edit_admin_sidebar_path(sidebar), :class => "btn btn-mini" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>

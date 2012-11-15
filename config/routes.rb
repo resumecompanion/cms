@@ -11,6 +11,7 @@ Cms::Engine.routes.draw do
     resources :users
     resources :navigations, :except => [:show]
     resources :images
+    resources :sidebars, :except => [:show, :destroy]
     resources :ckeditor, :only => [:index, :create]
     resources :pages, :except => [:show] do
       get :children, :on => :member

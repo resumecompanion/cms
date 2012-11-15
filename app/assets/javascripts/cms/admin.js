@@ -15,4 +15,5 @@
 //= require ./plugin/bootstrap.min
 //= require ./admin/overlay
 //= require ./admin/pages
+//= require ./admin/sidebars
 

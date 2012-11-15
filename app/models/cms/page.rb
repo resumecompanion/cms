@@ -1,6 +1,6 @@
 module Cms
   class Page < ActiveRecord::Base
-    attr_accessible :parent_id, :author_id, :position, :title, :is_displayed_title, :slug, :meta_description, :meta_keywords,
+    attr_accessible :parent_id, :author_id, :sidebar_id, :position, :title, :is_displayed_title, :slug, :meta_description, :meta_keywords,
                     :content, :is_published, :generate_slug
 
     attr_accessor :generate_slug
@@ -9,6 +9,7 @@ module Cms
     belongs_to :parent, :class_name => "Cms::Page", :foreign_key => :parent_id
 
     belongs_to :author, :class_name => "Cms::User", :foreign_key => :author_id
+    belongs_to :sidebar, :class_name => "Cms::Sidebar", :foreign_key => :sidebar_id
 
     validates_presence_of :author_id, :title
 
