@@ -7,6 +7,11 @@ module Cms
 
     def show
       @page = Cms::Page.where(:slug => params[:id], :is_published => true).first
+
+      redirect_to :action => :render_404 if @page.blank?
+    end
+
+    def render_404
     end
   end
 end
