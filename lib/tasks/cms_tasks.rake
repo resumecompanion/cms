@@ -77,6 +77,7 @@ namespace :cms do
 
     puts "create navigations"
 
+    setting = Cms::Setting.create(:key => "global:website_title", :value => "ResumeCompanion", :description => "This will be your website name")
     setting = Cms::Setting.create(:key => "global:index", :value => "/resume/home", :description => "This is a path you want to be index page")
     setting = Cms::Setting.create(:key => "global:meta_title", :value => "ResumeCompanion CMS", :description => "This is default title if we can't find tilte")
     setting = Cms::Setting.create(:key => "global:meta_description", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
