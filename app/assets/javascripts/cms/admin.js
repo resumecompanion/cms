@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require ./plugin/bootstrap.min
+//= require ./admin/overlay
 //= require ./admin/pages
+

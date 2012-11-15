@@ -7,12 +7,15 @@ $(function(){
       var self = this
       var url = $(self).attr("data-url");
 
+      Overlay.enable();
+
       if($(self).hasClass("closed")){
         $(self).removeClass("closed");
         $(self).addClass("open");
 
         $.get(url, function(data){
           $(self).parent().append(data);
+          Overlay.disable();
         });
       }else {
         $(self).removeClass("open");
@@ -22,6 +25,10 @@ $(function(){
       }
 
       return false;
+    });
+
+    $(document).on("click", ".delete-page-button", function(){
+      Overlay.enable();
     });
   }
 
