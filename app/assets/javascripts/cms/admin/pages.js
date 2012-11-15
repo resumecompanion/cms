@@ -7,9 +7,8 @@ $(function(){
       var self = this
       var url = $(self).attr("data-url");
 
-      Overlay.enable();
-
       if($(self).hasClass("closed")){
+        Overlay.enable();
         $(self).removeClass("closed");
         $(self).addClass("open");
 
