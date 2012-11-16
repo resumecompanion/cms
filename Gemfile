@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'fog'
 gem 'stringex'
 gem 'kaminari'
 
