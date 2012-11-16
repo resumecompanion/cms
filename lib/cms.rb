@@ -2,7 +2,7 @@ require 'devise'
 require 'simple_form'
 require 'compass-rails'
 require 'carrierwave'
-require 'rmagick'
+#require 'rmagick'
 require 'stringex'
 require 'kaminari'
 

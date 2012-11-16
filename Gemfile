@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'carrierwave'
-gem 'rmagick', '2.12.2'
+#gem 'rmagick', '2.12.2'
 gem 'stringex'
 gem 'kaminari'
 
