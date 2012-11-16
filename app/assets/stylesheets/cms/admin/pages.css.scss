@@ -2,11 +2,11 @@
   li {
     margin-bottom:10px;
     &.folder {
-      list-style: url(folder.png);
+      list-style: url(./admin/folder.png);
     }
 
     &.page {
-      list-style: url(page.png);
+      list-style: url(./admin/page.png);
     }
   }
 
