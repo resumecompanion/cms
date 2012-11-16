@@ -2,11 +2,11 @@
   li {
     margin-bottom:10px;
     &.folder {
-      list-style: url(./admin/folder.png);
+      list-style: image-url("cms/admin/folder.png");
     }
 
     &.page {
-      list-style: url(./admin/page.png);
+      list-style: image-url("cms/admin/page.png");
     }
   }
 

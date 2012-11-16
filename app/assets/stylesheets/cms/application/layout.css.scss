@@ -32,7 +32,7 @@ a {
 
 #header {
   border-bottom:1px solid #aabcc3;
-  background:url(./application/header.png) 0 0 repeat-x;
+  background:image-url("cms/application/header.png") 0 0 repeat-x;
 
   .content {
     margin:0 auto;
@@ -46,7 +46,7 @@ a {
         text-indent:-9999px;
         width:324px;
         height:64px;
-        background:transparent url(./application/cms-logo.png) no-repeat;
+        background:transparent image-url("cms/application/cms-logo.png") no-repeat;
     }
 
     #website-description {
@@ -60,7 +60,7 @@ a {
 }
 
 #navigation {
-  background:url(./application/nav.png) 0 0 repeat-x;
+  background:image-url("cms/application/nav.png") 0 0 repeat-x;
 
   ul {
     margin:0 auto;
@@ -73,7 +73,7 @@ a {
       padding:0 10px;
       font-size:14px;
       font-weight:bold;
-      background:url(./application/nav_background.png) right no-repeat;
+      background:image-url("cms/application/nav_background.png") right no-repeat;
 
       a {
         text-decoration:none;
@@ -87,7 +87,7 @@ a {
   margin:0 auto;
   padding:20px 24px 10px 24px;
   width:940px;
-  background:url(./application/background.png) center repeat-y;
+  background:image-url("cms/application/background.png") center repeat-y;
 
   #breadcrumb {
     margin-bottom:20px;
