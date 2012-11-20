@@ -72,9 +72,9 @@ namespace :cms do
 
     puts "create admim"
 
-    navigation = Cms::Navigation.create(:name => "Home", :link => "/resume", :link_title => "Home", :is_hidden => false)
-    navigation = Cms::Navigation.create(:name => "Resume Companion", :link => "/resume/resume-examples", :link_title => "Home", :is_hidden => false)
-    navigation = Cms::Navigation.create(:name => "About Resume Companion", :link => "/resume/about-resume-companion", :link_title => "Home", :is_hidden => false)
+    navigation = Cms::Navigation.create(:name => "Home", :link => "/resume", :link_title => "Home", :is_hidden => false, :position => 1)
+    navigation = Cms::Navigation.create(:name => "Resume Companion", :link => "/resume/resume-examples", :link_title => "Home", :is_hidden => false, :position => 2)
+    navigation = Cms::Navigation.create(:name => "About Resume Companion", :link => "/resume/about-resume-companion", :link_title => "Home", :is_hidden => false, :position => 3)
 
     puts "create navigations"
 
