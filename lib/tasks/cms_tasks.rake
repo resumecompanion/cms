@@ -12,7 +12,7 @@ namespace :cms do
     results.each do |result|
       result_content = client.query("select refinery_page_part_translations.body from refinery_page_part_translations inner join refinery_page_parts on refinery_page_part_translations.refinery_page_part_id = refinery_page_parts.id  where refinery_page_parts.refinery_page_id = #{result[:id]} and refinery_page_parts.title = 'Body'", :as => :hash, :symbolize_keys => true).first
       result_attribute = client.query("select * from refinery_page_translations where refinery_page_id = #{result[:id]}", :as => :hash, :symbolize_keys => true).first
-      result_seo = client.query("select * from seo_meta where seo_meta_id = #{result[:id]}", :as => :hash, :symbolize_keys => true).first
+      result_seo = client.query("select * from seo_meta where seo_meta_id = #{result[:id]} and seo_meta_type = 'Refinery::Page::Translation'", :as => :hash, :symbolize_keys => true).first
 
       doc = Nokogiri::HTML.fragment(result_content[:body])
 
