@@ -7,7 +7,7 @@
     </section>
 
     <%= simple_form_for @setting, :url => cms.admin_setting_path(@setting), :method => "put" do |f| %>
-        <%= f.input :value %>
+        <%= f.input :value, :input_html => { :class => "span12" } %>
       <div class="form-actions">
         <%= f.submit "Save Changes", :class => "btn btn-primary" %>
         <%= link_to "Cancel", cms.admin_settings_path, :class => "btn" %>
