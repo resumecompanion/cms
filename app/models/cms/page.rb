@@ -37,6 +37,15 @@ module Cms
       parent_ids_array.reverse
     end
 
+    def images_sitemap
+      ha = []
+      doc = Nokogiri::HTML(self.content)
+      doc.css('img').each do |img|
+        ha << {:loc => img.attr(:src), :title => (img.attr(:title) || img.attr(:alt) || '')}
+      end
+      ha
+    end
+
     protected
 
     def handle_slug
