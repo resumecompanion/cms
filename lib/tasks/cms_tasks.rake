@@ -17,7 +17,7 @@ namespace :cms do
       doc = Nokogiri::HTML.fragment(result_content[:body])
 
       doc.css('a').each do |link|
-        match = link[:href].match(/^http:\/\/resumecompanion.com\/resume\/pages(.*)/) || link[:href].match(/^\/resume\/pages(.*)/) || link[:href].match(/^\/resume\/home(.*)/)
+        match = link[:href].match(/^http:\/\/resumecompanion.com\/resume\/pages(.*)/) || link[:href].match(/^\/resume\/pages(.*)/) || link[:href].match(/^\/resume\/home(.*)/) if link[:href].present?
         link[:href] = "/resume/#{match[1].split("/").last}" if match.present?
       end
 
