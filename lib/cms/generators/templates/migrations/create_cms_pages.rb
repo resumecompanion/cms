@@ -16,5 +16,12 @@ class CreateCmsPages < ActiveRecord::Migration
       t.integer :old_id
       t.timestamps
     end
+
+    add_index :cms_pages, :parent_id
+    add_index :cms_pages, :author_id
+    add_index :cms_pages, :sidebar_id
+    add_index :cms_pages, :slug
+    add_index :cms_pages, :is_displayed_title
+    add_index :cms_pages, :is_published
   end
 end

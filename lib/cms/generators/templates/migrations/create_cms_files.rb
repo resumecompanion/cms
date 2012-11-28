@@ -6,5 +6,7 @@ class CreateCmsFiles < ActiveRecord::Migration
       t.string :title
       t.timestamps
     end
+
+    add_index :cms_files, :cms_user_id
   end
 end

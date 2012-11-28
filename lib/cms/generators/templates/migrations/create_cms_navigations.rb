@@ -9,7 +9,6 @@ class CreateCmsNavigations < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :cms_navigations, :position
     add_index :cms_navigations, :is_hidden
   end
 end
