@@ -8,6 +8,7 @@ module Cms
 
       def index
         @pages = Cms::Page.where(:parent_id => nil).includes(:author)
+        @last_update_page = Cms::Page.find(params[:last_update_id]) if params[:last_update_id].present?
       end
 
       def new
@@ -19,7 +20,7 @@ module Cms
       def create
         @page = Cms::Page.new(params[:page])
         if @page.save
-          redirect_to cms.admin_pages_path
+          redirect_to cms.admin_pages_path(:last_update_id => @page.id)
         else
           @users = Cms::User.where(:is_admin => true)
           @roots = Cms::Page.where(:parent_id => nil)
@@ -35,7 +36,7 @@ module Cms
 
       def update
         if @page.update_attributes(params[:page])
-          redirect_to cms.admin_pages_path
+          redirect_to cms.admin_pages_path(:last_update_id => @page.id)
         else
           @parent_ids = @page.all_parent_ids
           @users = Cms::User.where(:is_admin => true)
