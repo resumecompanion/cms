@@ -124,6 +124,16 @@ a {
     .content {
       float:left;
     }
+
+    .free-resume-builder-banner {
+      float:left;
+      display:block;
+      margin:20px 0;
+      text-indent:-9999px;
+      width:620px;
+      height:140px;
+      background:image_url("cms/application/free-resume-builder-banner.png");
+    }
   }
 
   #footer {
