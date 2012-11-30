@@ -47,11 +47,10 @@
     </div>
 
     <%= yield %>
-
-    <div id="footer">
-      <p>Copyright © 2009-2012 Resume Companion LLC. All Rights reserved.</p>
-    </div>
+    <div class="clear-all"></div>
   </div>
+
+  <%= render "cms/shared/footer" %>
 
   <%= render "cms/shared/google_analytics" if Rails.env.production? %>
 
