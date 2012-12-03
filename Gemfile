@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'stringex'
 gem 'kaminari'
+gem 'thinking-sphinx', :require => "thinking_sphinx"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.0'

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span12">
+    <section>
+      <table class="table table-striped">
+        <tr>
+          <th>title</th>
+          <th>nickname</th>
+          <th>created at</th>
+          <th>actions</th>
+        </tr>
+        <% @pages.each do |page| %>
+          <tr>
+            <td><%= page.title %></td>
+            <td><%= page.author.nickname %></td>
+            <td><%= page.created_at %></td>
+            <td>
+              <%= link_to "Delete", cms.admin_page_path(page), :method => "delete", :class => "btn btn-danger btn-mini pull-right delete-page-button", :confirm => "It can't be recoverd, are your sure?" %>
+              <%= link_to "Edit", cms.edit_admin_page_path(page), :class => "btn btn-mini pull-right", :style => "margin-right:10px" %>
+              <%= link_to "Preview", cms.pages_path(page), :target => "_blank", :class => "btn btn-mini btn-primary pull-right", :style => "margin-right:10px" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </section>
+  </div>
+</div>
+
+<div class="row" style="text-align:center">
+  <%= paginate @pages %>
+</div>

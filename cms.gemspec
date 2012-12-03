@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_dependency "compass-rails"
   s.add_dependency "stringex"
   s.add_dependency "kaminari"
+  s.add_dependency "thinking-sphinx"
 end

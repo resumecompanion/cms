@@ -8,6 +8,10 @@
 
     <section>
       <%= link_to "Create New Page", cms.new_admin_page_path, :class => "btn btn-primary pull-right", :style => "margin-bottom:30px" %>
+      <%= form_tag admin_pages_path, :method => "GET" do %>
+        <input type="submit" value="search" class="pull-right" style="margin:3px 20px 0 0">
+        <input type="text" name="q" value="<%= params[:q]%>" class="pull-right" style="margin-right:20px" placeholder="Search">
+      <% end %>
     </section>
   </div>
 </div>
@@ -23,4 +27,8 @@
 
 <% end %>
 
-<%= render "page_list", :pages => @pages, :type => "root" %>
+<% if params[:q].present? %>
+  <%= render "search", :pages => @pages %>
+<% else %>
+  <%= render "page_list", :pages => @pages, :type => "root" %>
+<% end %>

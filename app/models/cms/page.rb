@@ -19,6 +19,11 @@ module Cms
     before_update :update_counter
     before_destroy :decrease_counter
 
+    define_index do
+      indexes title, :as => :title, :sortable => true
+      indexes content, :as => :content, :sortable => true
+    end
+
     def to_param
       self.slug
     end

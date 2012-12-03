@@ -6,6 +6,7 @@ require 'fog'
 require 'stringex'
 require 'kaminari'
 require 'compass'
+require 'thinking_sphinx'
 
 require 'cms/engine'
 require 'cms/generators/install_generator'

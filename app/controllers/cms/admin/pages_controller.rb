@@ -7,8 +7,12 @@ module Cms
       before_filter :find_page, :only => [:edit, :update, :destroy]
 
       def index
-        @pages = Cms::Page.where(:parent_id => nil).includes(:author)
-        @last_update_page = Cms::Page.find(params[:last_update_id]) if params[:last_update_id].present?
+        if params[:q].present?
+          @pages = Cms::Page.search(:conditions => {:title => params[:q]}).page(params[:page])
+        else
+          @pages = Cms::Page.where(:parent_id => nil).includes(:author)
+          @last_update_page = Cms::Page.find(params[:last_update_id]) if params[:last_update_id].present?
+        end
       end
 
       def new
