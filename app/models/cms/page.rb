@@ -20,8 +20,8 @@ module Cms
     before_destroy :decrease_counter
 
     define_index do
-      indexes title, :as => :title, :sortable => true
-      indexes content, :as => :content, :sortable => true
+      indexes title, :as => :title
+      indexes content, :as => :content
     end
 
     def to_param
