@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= render_cms_page_title(@page.try(:title)) %>
-  <%= render_cms_meta_description(@page.try(:meta_description)) %>
-  <%= render_cms_meta_keywords(@page.try(:meta_keywords)) %>
+  <%= render_cms_page_title(@title) %>
+  <%= render_cms_meta_description(@meta_description) %>
+  <%= render_cms_meta_keywords(@meta_keywords) %>
   <%= stylesheet_link_tag    "cms/application", :media => "all" %>
   <%= javascript_include_tag "cms/application" %>
   <%= csrf_meta_tags %>
