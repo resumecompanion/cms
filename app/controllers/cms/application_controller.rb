@@ -12,7 +12,7 @@ module Cms
     end
 
     def get_ga_account
-      @account = get_setting("global:ga_account")
+      @ga_account = get_setting("global:ga_account")
     end
   end
 end
