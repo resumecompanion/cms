@@ -1,4 +1,15 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+#image-list {
+  .row {
+    margin-bottom:30px;
+  }
+
+  .span2 {
+    position:relative;
+
+    .action {
+      position:absolute;
+      bottom:0;
+      width:100%;
+    }
+  }
+}

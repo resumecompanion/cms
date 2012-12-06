@@ -8,9 +8,9 @@
 
     <section>
       <%= link_to "Create New Page", cms.new_admin_page_path, :class => "btn btn-primary pull-right", :style => "margin-bottom:30px" %>
-      <%= form_tag admin_pages_path, :method => "GET" do %>
-        <input type="submit" value="search" class="pull-right" style="margin:3px 20px 0 0">
-        <input type="text" name="q" value="<%= params[:q]%>" class="pull-right" style="margin-right:20px" placeholder="Search">
+      <%= form_tag admin_pages_path, :method => "GET", :id => "search-form" do %>
+        <input type="submit" value="search" class="pull-right search-button">
+        <input type="text" name="q" value="<%= params[:q]%>" class="pull-right search-input" placeholder="Search">
       <% end %>
     </section>
   </div>

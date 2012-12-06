@@ -1,13 +1,13 @@
 <div class="row">
 
 <% @files.each_with_index do |file, i| %>
-  <div style="float:left">
+  <div class="pull-left">
     <%= link_to image_tag(file.image.url(:thumb), :title => file.title), "#", :data => { :url => file.image.url(:large) }, :class => "add-image" %>
   </div>
 <% end %>
 </div>
 
-<div class="row" style="text-align:center">
+<div class="row text-center">
   <%= paginate @files %>
 </div>
 
