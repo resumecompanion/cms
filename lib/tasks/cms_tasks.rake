@@ -83,6 +83,7 @@ namespace :cms do
     setting = Cms::Setting.create(:key => "global:meta_title", :value => "ResumeCompanion CMS", :description => "This is default title if we can't find tilte")
     setting = Cms::Setting.create(:key => "global:meta_description", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
     setting = Cms::Setting.create(:key => "global:meta_keywords", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
+    setting = Cms::Setting.create(:key => "global:ga_account", :value => "UA-513849-6", :description => "This is GA account")
 
     puts "create settings"
 
