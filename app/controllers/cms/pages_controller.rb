@@ -1,8 +1,8 @@
 module Cms
   class PagesController < ApplicationController
     def index
-      url = Cms::Setting.find_by_key("global:index")
-      redirect_to url.value
+      url = get_setting("global:index") || "/"
+      redirect_to url
     end
 
     def show
@@ -10,9 +10,9 @@ module Cms
 
       redirect_to :action => :render_404 if @page.blank?
 
-      @title = @page.title || Cms::Setting.find_by_key("global:meta_title").try(:value)
-      @meta_description = @page.meta_description || Cms::Setting.find_by_key("global:meta_description").try(:value)
-      @meta_keywords = @page.meta_keywords || Cms::Setting.find_by_key("global:meta_keywords").try(:value)
+      @title = @page.title || get_setting("global:meta_title")
+      @meta_description = @page.meta_description || get_setting("global:meta_description")
+      @meta_keywords = @page.meta_keywords || get_setting("global:meta_keywords")
     end
 
     def render_404
