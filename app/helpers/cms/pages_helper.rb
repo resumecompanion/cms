@@ -15,7 +15,7 @@ module Cms
         page = Cms::Page.where(:slug => dom.content).first
         dom.name = "div"
         dom.content = ""
-        page.children.order("title").each do |child_page|
+        page.children.where(:is_published => true).order("title").each do |child_page|
           dom << link_to(child_page.title, cms.pages_path(child_page))
         end
       end
