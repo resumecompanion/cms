@@ -14,6 +14,7 @@ module Cms
       doc.css("children_pages").each do |dom|
         page = Cms::Page.where(:slug => dom.content).first
         dom.name = "div"
+        dom.content = ""
         page.children.order("title").each do |child_page|
           dom << link_to(child_page.title, cms.pages_path(child_page))
         end
