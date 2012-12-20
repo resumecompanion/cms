@@ -27,7 +27,7 @@
 
   <div id="navigation">
     <ul>
-      <% Cms::Navigation.where(:is_hidden => false).each do |navigation| %>
+      <% Cms::Navigation.where(:is_hidden => false).order(:position).each do |navigation| %>
         <li><%= link_to navigation.name, navigation.link %></li>
       <% end %>
     </ul>
