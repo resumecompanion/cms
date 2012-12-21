@@ -2,7 +2,7 @@ module Cms
   class PagesController < ApplicationController
     def index
       url = get_setting("global:index") || "/"
-      redirect_to url
+      redirect_to url, :status => 301
     end
 
     def show
