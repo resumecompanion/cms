@@ -10,6 +10,7 @@ require 'thinking_sphinx'
 
 require 'cms/engine'
 require 'cms/generators/install_generator'
+require 'cms/generators/add_meta_title_generator'
 
 module Cms
   def self.setup
