@@ -11,6 +11,7 @@ module Cms
       redirect_to :action => :render_404 if @page.blank?
 
       @title = @page.title || get_setting("global:meta_title")
+      @meta_title = @page.meta_title
       @meta_description = @page.meta_description || get_setting("global:meta_description")
       @meta_keywords = @page.meta_keywords || get_setting("global:meta_keywords")
     end
