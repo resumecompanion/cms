@@ -15,6 +15,7 @@ module Cms
 
     before_create :handle_slug
 
+    before_save :set_meta_title
     before_create :increase_counter
     before_update :update_counter
     before_destroy :decrease_counter
@@ -64,6 +65,10 @@ module Cms
           return false
         end
       end
+    end
+
+    def set_meta_title
+      self.meta_title = self.title if self.meta_title.blank?
     end
 
     def increase_counter
