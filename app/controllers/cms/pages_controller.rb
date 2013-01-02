@@ -8,7 +8,10 @@ module Cms
     def show
       @page = Cms::Page.where(:slug => params[:id], :is_published => true).first
 
-      redirect_to :action => :render_404 if @page.blank?
+      if @page.blank?
+        redirect_to :action => :render_404
+        return
+      end
 
       @title = @page.title || get_setting("global:meta_title")
       @meta_title = @page.meta_title
