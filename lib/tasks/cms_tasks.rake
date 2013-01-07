@@ -142,4 +142,21 @@ namespace :cms do
       page.save
     end
   end
+
+  task :convert_s3_url_to_staging => :environment do
+    Cms::Page.find_each do |page|
+      body = Nokogiri::HTML.fragment(page.content)
+
+      body.css('a').each do |link|
+        link[:href] = link[:href].gsub("resumecompanionp", "resumecompanionp-staging") if link[:href] && link[:href].match(/resumecompanionp\.s3\.amazonaws\.com/)
+      end
+
+      body.css('img').each do |img|
+        img[:src] = img[:src].gsub("resumecompanionp", "resumecompanionp-staging") if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
+      end
+
+      page.content = body.inner_html
+      page.save
+    end
+  end
 end
