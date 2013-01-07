@@ -40,11 +40,25 @@ class Cms::ImageUploader < ::CarrierWave::Uploader::Base
 
   version :large do
     process :resize_to_limit => [620, nil]
+
+    def full_filename (for_file = model.image.file)
+      filename = File.basename(for_file)
+      ext = File.extname(for_file)
+      base_name = filename.chomp(ext)
+      [base_name, version_name].compact.join('-') + ext
+    end
   end
 
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fill => [170, 170]
+
+    def full_filename (for_file = model.image.file)
+      filename = File.basename(for_file)
+      ext = File.extname(for_file)
+      base_name = filename.chomp(ext)
+      [base_name, version_name].compact.join('-') + ext
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -59,4 +73,29 @@ class Cms::ImageUploader < ::CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def rename(new_name)
+    original_file = model.image.file
+
+    if File.exist?(original_file.path)
+      extname = File.extname(original_file.path)
+
+      if extname.blank?
+        temp_file = File.open(original_file.path, "r")
+        identify_type = temp_file.gets[0,4]
+
+        if identify_type.include?("PNG")
+          extname = ".png"
+        elsif identify_type[0] == "\xFF"
+          extname = ".jpg"
+        end
+      end
+
+      new_path = File.join(File.dirname(original_file.path), "#{new_name}#{extname}")
+      new_file = CarrierWave::SanitizedFile.new original_file.move_to(new_path)
+      model.image.cache!(new_file)
+      model.save!
+    end
+
+    return model
+  end
 end
