@@ -74,26 +74,61 @@ class Cms::ImageUploader < ::CarrierWave::Uploader::Base
   # end
 
   def rename(new_name)
-    original_file = model.image.file
 
-    if File.exist?(original_file.path)
-      extname = File.extname(original_file.path)
+    if Rails.env.production? || Rails.env.staging?
 
-      if extname.blank?
-        temp_file = File.open(original_file.path, "r")
-        identify_type = temp_file.gets[0,4]
+      original_file = model.image.file
 
-        if identify_type.include?("PNG")
-          extname = ".png"
-        elsif identify_type[0] == "\xFF"
-          extname = ".jpg"
+      temp_file = File.open open(original_file.url) rescue nil
+
+      if temp_file.present?
+        temp_file_path = File.dirname temp_file
+        temp_file_extname = File.extname temp_file
+
+        if temp_file_extname.blank?
+          identify_type = File.open(temp_file).gets[0,4]
+
+          if identify_type.include?("PNG")
+            temp_file_extname = ".png"
+          elsif identify_type[0] == "\xFF"
+            temp_file_extname = ".jpg"
+          end
         end
+
+        new_path = temp_file_path + "/" + new_name + temp_file_extname
+
+        FileUtils.mv temp_file, new_path
+
+        new_file = File.open new_path
+
+        model.image = new_file
+        model.save!
       end
 
-      new_path = File.join(File.dirname(original_file.path), "#{new_name}#{extname}")
-      new_file = CarrierWave::SanitizedFile.new original_file.move_to(new_path)
-      model.image.cache!(new_file)
-      model.save!
+    else
+
+      original_file = model.image.file
+
+      if File.exist?(original_file.path)
+        extname = File.extname(original_file.path)
+
+        if extname.blank?
+          temp_file = File.open(original_file.path, "r")
+          identify_type = temp_file.gets[0,4]
+
+          if identify_type.include?("PNG")
+            extname = ".png"
+          elsif identify_type[0] == "\xFF"
+            extname = ".jpg"
+          end
+        end
+
+        new_path = File.join(File.dirname(original_file.path), "#{new_name}#{extname}")
+        new_file = CarrierWave::SanitizedFile.new original_file.move_to(new_path)
+        model.image.cache!(new_file)
+        model.save!
+      end
+
     end
 
     return model
