@@ -8,6 +8,7 @@
 
     <%= simple_form_for @file, :url => cms.admin_image_path(@file), :method => "put" do |f| %>
       <%= f.input :title, :input_html => { :class => "span8" } %>
+      <%= f.input :filename, :hint => "<br><b>important</b> - You have to modify all the link after you modify filename!", :input_html => { :class => "span8" } %>
       <%= image_tag @file.image.url(:large) %>
 
       <div class="form-actions">
