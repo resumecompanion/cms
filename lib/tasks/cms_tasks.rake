@@ -159,4 +159,48 @@ namespace :cms do
       page.save
     end
   end
+
+  task :migrate_image => :environment do
+    same_results = []
+
+    Cms::Page.find_each do |page|
+      body = Nokogiri::HTML.fragment(page.content)
+
+      image_counter = 0
+
+      body.css('img').each do |img|
+        if img[:src] && match = img[:src].match(/resumecompanionp(\-staging)?\.s3\.amazonaws\.com\/uploads\/cms\/file\/image\/([0-9]*)\/(.*)/)
+          file_id = match[2].to_i
+          original_filename = match[3]
+
+          puts "@@@@@@#{page.slug}"
+
+          file = Cms::File.find(file_id) rescue nil
+          if file.present?
+
+            filename = page.slug
+            filename += "-" + image_counter.to_s if image_counter != 0
+
+            if file.image.rename(filename)
+
+              result_filename = File.basename(file.image.path)
+
+              img[:src] = img[:src].gsub(original_filename, result_filename)
+
+              puts "@@@@@@#{file_id} - #{original_filename} => #{result_filename}"
+              same_results << "@@@@@@#{file_id} - #{original_filename} => #{result_filename}" if original_filename == result_filename
+              image_counter += 1
+            end
+          end
+        end
+      end
+
+      page.content = body.inner_html
+      page.save
+    end
+
+    puts "The same results: #{same_results.length}"
+    puts same_results
+
+  end
 end
