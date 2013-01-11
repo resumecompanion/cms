@@ -6,6 +6,16 @@
   <%= render_cms_meta_keywords(@meta_keywords) %>
   <%= stylesheet_link_tag    "cms/application", :media => "all" %>
   <%= javascript_include_tag "cms/application" %>
+
+  <% if Rails.env.production? || Rails.env.staging? %>
+
+  <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+  <script type="text/javascript">
+    new HelloBar(51615,72839);
+  </script>
+
+  <% end %>
+
   <%= csrf_meta_tags %>
   <%= render_canonical_url(@canonical_url) %>
 </head>
