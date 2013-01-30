@@ -1,0 +1,11 @@
+<div id="breadcrumb">
+  <% page_ids = @page.all_parent_ids.concat([@page.id]) rescue [] %>
+  <% page_ids.each_with_index do |page_id, i| %>
+    <% page = Cms::Page.find(page_id) %>
+    <% unless (i + 1) == page_ids.length %>
+      <%= link_to page.title, cms.pages_path(page) %> \
+    <% else %>
+      <%= link_to page.title, cms.pages_path(page), :class => "last" %>
+    <% end %>
+  <% end %>
+</div>

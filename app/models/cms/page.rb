@@ -43,6 +43,10 @@ module Cms
       parent_ids_array.reverse
     end
 
+    def level
+      all_parent_ids.length + 1
+    end
+
     def images_sitemap
       ha = []
       doc = Nokogiri::HTML(self.content)
