@@ -201,6 +201,18 @@ namespace :cms do
 
     puts "The same results: #{same_results.length}"
     puts same_results
+  end
 
+  task :remove_sub_category => :environment do
+    puts "start to delete"
+    Cms::Page.find_each do |page|
+      body = Nokogiri::HTML.fragment(page.content)
+      body.css(".sub-category").each do |node|
+        node.remove
+      end
+
+      page.content = body.inner_html
+      page.save
+    end
   end
 end
