@@ -69,25 +69,8 @@ a {
       float:right;
       margin:15px 20px 0 0;
 
-      .google-search {
-        margin-left:40px;
-        width:240px;
-        height:26px;
-        font-size:13px;
-        text-indent:33px;
-        border:1px solid #CCCCCC;
-        @include border-radius(5px);
-        background:image-url("cms/application/icons/search.png") 10px 6px no-repeat;
-
-        &.placeholder {
-          color:#e9e9e9;
-        }
-        &:-moz-placeholder {
-          color:#e9e9e9;
-        }
-        &::-webkit-input-placeholder {
-          color:#e9e9e9;
-        }
+      #___gcse_0 {
+        width:280px;
       }
     }
   }
@@ -127,7 +110,7 @@ a {
   background:#FFFFFF;
 
   #breadcrumb {
-    margin-bottom:25px;
+    margin:0px 0 30px 0;
     color:#CCCCCC;
     font-size:12px;
     a {
@@ -144,7 +127,6 @@ a {
     }
   }
 
-
   #main {
     float:left;
     padding-bottom:20px;
@@ -153,7 +135,7 @@ a {
     .default-title {
       margin-bottom:25px;
       h1 {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: bold;
       }
     }

@@ -20,6 +20,9 @@ module Cms
       @canonical_url = cms.pages_url(@page)
     end
 
+    def search
+    end
+
     def render_404
     end
   end

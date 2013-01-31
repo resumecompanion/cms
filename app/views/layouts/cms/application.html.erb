@@ -33,9 +33,7 @@
         Your career starts here
       </p>
       <div id="google-search-bar">
-        <%= form_for "" do |f| %>
-          <% f.text_field "search", :class => "google-search", :placeholder => "Search Site" %>
-        <% end %>
+        <gcse:searchbox-only></gcse:searchbox-only>
       </div>
     </div>
   </div>
@@ -44,7 +42,7 @@
     <ul>
       <% Cms::Navigation.where(:is_hidden => false).order(:position).each do |navigation| %>
         <li>
-          <%= link_to navigation.name, navigation.link, :class => navigation_selected?(navigation, @page) %>
+          <%= link_to navigation.name, navigation.link, :class => "#{navigation_selected?(navigation, @page) if @page.present?}" %>
         </li>
       <% end %>
     </ul>
@@ -53,20 +51,25 @@
   <div id="container">
     <div id="main">
 
-      <%= render "cms/shared/breadcrumb" if @page.parent_id.present? %>
+      <%= render "cms/shared/breadcrumb" if @page.present? && @page.parent_id.present? %>
 
       <%= yield %>
 
-      <%= render "cms/shared/sub_categories" %>
+      <%= render "cms/shared/sub_categories" if @page.present? %>
     </div>
 
+    <% if @page.present? %>
     <div id="sidebar">
-      <%=raw convert_macro(@page.sidebar.try(:content)) if @page.present? %>
+      <%=raw convert_macro(@page.sidebar.try(:content)) %>
     </div>
+    <% end %>
+
+    <%= yield :search_result %>
 
     <%= render "cms/shared/footer" %>
   </div>
 
+  <%= render "cms/shared/google_search" %>
   <%= render "cms/shared/google_analytics" if Rails.env.production? %>
 
 </body>

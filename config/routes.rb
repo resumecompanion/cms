@@ -20,6 +20,7 @@ Cms::Engine.routes.draw do
     root :to => 'users#index'
   end
 
+  match "/search" => "pages#search"
   match "/404" => "pages#render_404"
   match "/:id" => "pages#show", :as => :pages
 
