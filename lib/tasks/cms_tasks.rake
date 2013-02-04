@@ -215,4 +215,64 @@ namespace :cms do
       page.save
     end
   end
+
+  task :download_resume_example_images => :environment do
+
+    FileUtils.mkdir(File.join(Rails.root, "tmp", "resume_example")) unless Dir.exist?(File.join(Rails.root, "tmp", "resume_example"))
+
+    Cms::File.find_each do |file|
+
+      url = "https://resumecompanionp.s3.amazonaws.com"
+
+      original_file = File.open open(url + file.image.to_s) rescue nil
+
+      if original_file.present?
+
+        width, height = `identify -format "%wx %h" #{original_file.path}`.split(/x/).map { |dim| dim.to_i }
+
+        if width == 620
+
+          match = file.image.to_s.match(/\/uploads\/cms\/file\/image\/(.*)\/(.*)/)
+
+          original_id = match[1]
+          original_filename = match[2].gsub("-large", "")
+          original_extname = File.extname(original_filename)
+          original_basename = File.basename(original_filename, original_extname)
+          large_filename = original_basename + "-large" + original_extname
+          thumb_filename = original_basename + "-thumb" + original_extname
+
+          FileUtils.mkdir(File.join(Rails.root, "tmp", "resume_example", original_id)) unless Dir.exist?(File.join(Rails.root, "tmp", "resume_example", original_id))
+          FileUtils.cp(original_file.path, File.join(Rails.root, "tmp", "resume_example", original_id, original_filename))
+          FileUtils.cp(original_file.path, File.join(Rails.root, "tmp", "resume_example", original_id, large_filename))
+
+          thumb_file = File.open open(url + "/uploads/cms/file/image/#{original_id}/#{thumb_filename}") rescue nil
+
+          if thumb_file.present?
+            FileUtils.cp(thumb_file.path, File.join(Rails.root, "tmp", "resume_example", original_id, thumb_filename))
+          else
+            puts "******"
+            puts "#{file.image.to_s} - thumb is not exist"
+            puts "******"
+          end
+
+          puts "========================================================"
+          puts "#{original_id}/#{original_basename}"
+          puts "#{original_id}/#{large_filename}"
+          puts "#{original_id}/#{thumb_filename}"
+          puts "========================================================"
+
+        else
+           puts "******"
+            puts "#{file.image.to_s} is not resume example"
+            puts "******"
+        end
+
+      else
+        puts "******"
+        puts "#{file.image.to_s} is not exist"
+        puts "******"
+      end
+
+    end
+  end
 end
