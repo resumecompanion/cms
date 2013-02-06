@@ -275,4 +275,23 @@ namespace :cms do
 
     end
   end
+
+  task :convert_s3_url_to_rc => :environment do
+    Cms::Page.find_each do |page|
+      body = Nokogiri::HTML.fragment(page.content)
+
+      body.css('img').each do |img|
+        if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
+          puts "======"
+          puts img
+          img[:src] = img[:src].gsub("resumecompanionp.s3.amazonaws.com", "image.resumecompanion.com")
+          puts img
+          puts "======"
+        end
+      end
+
+      page.content = body.inner_html
+      page.save
+    end
+  end
 end
