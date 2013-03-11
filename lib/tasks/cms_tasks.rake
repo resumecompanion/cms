@@ -284,7 +284,7 @@ namespace :cms do
         if img[:src] && img[:src].match(/resumecompanionp\.s3\.amazonaws\.com/)
           puts "======"
           puts img
-          img[:src] = img[:src].gsub("resumecompanionp.s3.amazonaws.com", "images.resumecompanion.com")
+          img[:src] = img[:src].gsub("https://resumecompanionp.s3.amazonaws.com", "http://images.resumecompanion.com")
           puts img
           puts "======"
         end
