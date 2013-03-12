@@ -55,6 +55,7 @@
 
       <%= yield %>
 
+      <%= render "cms/shared/social_buttons" if @page.present? %>
       <%= render "cms/shared/sub_categories" if @page.present? %>
     </div>
 
