@@ -13,4 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require cms/plugin/jquery.fancybox-1.3.4
-//= require cms/application/popup_box
