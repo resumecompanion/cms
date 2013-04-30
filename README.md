@@ -59,8 +59,8 @@ You can change the path you want.
 **http://localhost:3000/resume/users/login**
 
 ```
-admin@resumecompanion.com # id
-password 123456 # password
+id => admin@resumecompanion.com
+password => 123456
 ```
 
 ### 2. Setting
