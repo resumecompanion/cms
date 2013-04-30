@@ -107,17 +107,17 @@ The default logout method on devise is **"Delete"**, but, we use require_ssl in 
 
 ### 2. Micro Code
 
-We have three type of micro code in ```pages_helper.rb```:
+We have three type of micro code in ```pages_helper.rb``` :
 
-```<page_link>home</page_link>```
+***<page_link>home</page_link>***
 
 This micro code provide you set the page slug between ***page_link*** tag, it will replace with the page link.
 
-```<children_count>home</children_count>```
+***<children_count>home</children_count>***
 
 This micro code provide you set the page slug between ***children_count*** tag, it will replace with the children count.
 
-```<children_pages>home</children_pages>```
+***<children_pages>home</children_pages>***
 
 This micro code provide you set the page slug between ***children_count*** tag, it will replace with the children page list.
 
