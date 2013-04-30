@@ -20,9 +20,11 @@ module Cms
     before_update :update_counter
     before_destroy :decrease_counter
 
-    define_index do
-      indexes title, :as => :title
-      indexes content, :as => :content
+    if respond_to?(:define_index)
+      define_index do
+        indexes title, :as => :title
+        indexes content, :as => :content
+      end
     end
 
     def to_param
