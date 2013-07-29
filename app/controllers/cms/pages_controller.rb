@@ -1,3 +1,4 @@
+require 'cms/application_controller'
 module Cms
   class PagesController < ApplicationController
     def index
