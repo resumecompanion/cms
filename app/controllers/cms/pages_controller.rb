@@ -25,6 +25,7 @@ module Cms
     end
 
     def render_404
+      render status: 404
     end
   end
 end
