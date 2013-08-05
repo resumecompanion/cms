@@ -24,3 +24,4 @@
 <%= f.input :meta_description, :input_html => { :class => "span12" } %>
 <%= f.input :meta_keywords, :input_html => { :class => "span12" } %>
 <%= f.input :is_published, :label => "Published?", :as => :select, :include_blank => false %>
+<%= f.input :redirect_path, :hint => "If this page is not published and the redirect URL is set and this page is accessed them the user will experience a 301 redirect to the page in the redirect.  The format for the path should be '/resume/example-page'" %>

@@ -7,11 +7,15 @@ module Cms
     end
 
     def show
-      @page = Cms::Page.where(:slug => params[:id], :is_published => true).first
+      @page = Cms::Page.where(:slug => params[:id]).first
 
-      if @page.blank?
-        redirect_to :action => :render_404
+      if @page.blank? || (@page.is_published == false && @page.redirect_path.blank?)
+        render 'render_404', status: :not_found
         return
+      end
+
+      if @page.is_published == false && !@page.redirect_path.blank?
+        redirect_to @page.redirect_path, :status => :moved_permanently
       end
 
       @title = @page.title || get_setting("global:meta_title")
