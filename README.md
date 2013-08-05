@@ -30,9 +30,9 @@ When you are developing, you can enter ```bundle install```, but, **before you c
 
 ### 3. Generate Migration
 
+migrations are auto loaded by engine now so no need to copy
+
 ```ruby
-rails g cms:install # Generate default migration
-rails g cms:add_meta_title # Generate meta title migration
 rake db:migrate
 ```
 
