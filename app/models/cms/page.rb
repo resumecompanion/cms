@@ -58,6 +58,15 @@ module Cms
       ha
     end
 
+
+    def is_template_page?
+      self.all_parent_ids.include? 1
+    end
+    
+    def sample_of_children(excluded_child)
+      self.children.where("id != ? and is_published = ?", excluded_child.id, true).sample(5)
+    end
+
     protected
 
     def handle_slug

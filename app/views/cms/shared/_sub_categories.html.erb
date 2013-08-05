@@ -11,16 +11,10 @@
   <% when @page.level == 3 %>
   <div class="sub-category">
     <% parent = @page.parent %>
-    <% if parent.all_parent_ids.include? 1 %>
-      <h3>Other popular resume templates in <%= link_to parent.title.strip.capitalize, pages_path(parent), :title => parent.title %></h3>
-    <% else %>
-      <h3>Other popular resume examples in <%= link_to parent.title.strip.capitalize, pages_path(parent), :title => parent.title %></h3>
-    <% end %>
-    <% parent.children.where(:is_published => true).order(:title).each do |child| %>
+    <h3>Other popular resume <%= parent.is_template_page? ? 'templates' : 'examples' %> in <%= link_to parent.title.strip.capitalize, pages_path(parent), :title => parent.title %></h3>
+    <% parent.sample_of_children(@page).each do |child| %>
     <ul>
-      <% if child != @page %>
       <li><%= link_to child.title.strip.capitalize, cms.pages_path(child), :title => child.title %></li>
-      <% end %>
     </ul>
     <% end %>
   </div>
