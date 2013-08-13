@@ -21,7 +21,7 @@ Cms::Engine.routes.draw do
   end
 
   unless Rails.env.development?
-    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http')}, constraints: lambda {|request| puts request.path; request.ssl? && !(request.path =~ /users/ || request.path =! /admin/)}
+    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http')}, constraints: lambda {|request| puts request.path; request.ssl? && !(request.path =~ /users/ || request.path =~ /admin/)}
   end
   match "/search" => "pages#search"
   match "/404" => "pages#render_404"
