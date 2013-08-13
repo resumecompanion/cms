@@ -27,5 +27,4 @@ Gem::Specification.new do |s|
   s.add_dependency "stringex"
   s.add_dependency "kaminari"
   s.add_dependency "thinking-sphinx"
-  s.add_dependency 'rack-ssl-enforcer'
 end

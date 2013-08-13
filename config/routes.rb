@@ -20,6 +20,9 @@ Cms::Engine.routes.draw do
     root :to => 'users#index'
   end
 
+  unless Rails.env.development?
+    match "*initial_path", to: redirect {|params, req| req.url.gsub(/^https/, 'http')}, constraints: lambda {|request| request.ssl?}
+  end
   match "/search" => "pages#search"
   match "/404" => "pages#render_404"
   match "/:id" => "pages#show", :as => :pages
