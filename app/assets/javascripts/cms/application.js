@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require cms/plugin/jquery.fancybox-1.3.4
+//= require cms/application/open_remote_links_in_new_tab
