@@ -1,5 +1,13 @@
 # -*- encoding : utf-8 -*-
 namespace :cms do
+
+  desc "Update child count" 
+  task :update_child_count => :environment do
+    Cms::Page.find_each do |page|
+      page.update_child_count
+    end
+  end
+
   desc "Import Pages"
   task :import => :environment do
     config = YAML.load_file("#{Rails.root}/config/database.yml")[Rails.env]

@@ -16,9 +16,9 @@ module Cms
     before_create :handle_slug
 
     before_save :set_meta_title
-    before_create :increase_counter
-    before_update :update_counter
-    before_destroy :decrease_counter
+    after_create :update_parent_child_count
+    after_update :update_parent_child_count
+    after_destroy :update_parent_child_count
 
     if respond_to?(:define_index)
       define_index do
@@ -67,6 +67,15 @@ module Cms
       self.children.where("id != ? and is_published = ?", excluded_child.id, true).sample(5)
     end
 
+
+    def update_child_count
+      update_attribute :children_count, children.where("is_published = ?", true).count unless nil?
+    end
+
+    def update_parent_child_count
+      parent.update_child_count unless parent.nil?
+    end
+
     protected
 
     def handle_slug
@@ -84,21 +93,6 @@ module Cms
 
     def set_meta_title
       self.meta_title = self.title if self.meta_title.blank?
-    end
-
-    def increase_counter
-      self.class.increment_counter(:children_count, self.parent_id) if self.parent_id.present?
-    end
-
-    def update_counter
-      if self.parent_id_changed?
-        self.class.decrement_counter(:children_count, self.parent_id_was) if self.parent_id_was.present?
-        self.class.increment_counter(:children_count, self.parent_id) if self.parent_id_was.present?
-      end
-    end
-
-    def decrease_counter
-      self.class.decrement_counter(:children_count, self.parent_id) if self.parent_id.present?
     end
   end
 end
