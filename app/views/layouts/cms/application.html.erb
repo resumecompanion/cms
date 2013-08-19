@@ -53,6 +53,8 @@
 
       <%= render "cms/shared/breadcrumb" if @page.present? && @page.parent_id.present? %>
 
+      <%= render "cms/shared/social_buttons" if @page.present? %>
+
       <%= yield %>
 
       <%= render "cms/shared/social_buttons" if @page.present? %>
