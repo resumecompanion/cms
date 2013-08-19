@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
   <%= render_cms_page_title(@meta_title || @title) %>
   <%= render_cms_meta_description(@meta_description) %>
@@ -20,6 +20,14 @@
   <%= render_canonical_url(@canonical_url) %>
 </head>
 <body>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
   <% if cms_user_signed_in? && current_cms_user.is_admin? %>
   <div id="admin-bar">
     <%= link_to "Manage Your CMS", cms.admin_users_path, :class => "admin-button" %>
