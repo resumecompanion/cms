@@ -1,3 +1,12 @@
+<% content_for :header do %>
+  <meta property="og:title" content="<%= @meta_title || @title %>"> 
+  <meta property="og:description" content="<%= @meta_description %>"> 
+  <meta property="og:type" content="object"> 
+  <meta property="og:url" content="<%= pages_url(@page)%>">
+  <meta property="og:image" content="<%= "#{request.protocol}#{request.host_with_port}#{@page.first_image_url}" %>">
+  <meta property="og:site_name" content="Resume Companion">
+  <meta property="fb:admins" content="100003747837559" />
+<% end %>
 <% if @page.is_displayed_title? %>
 <div class="default-title">
   <h1><%= @page.title %></h1>

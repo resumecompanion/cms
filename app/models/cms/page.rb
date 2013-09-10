@@ -49,6 +49,11 @@ module Cms
       all_parent_ids.length + 1
     end
 
+    def first_image_url
+      doc = Nokogiri::HTML(self.content)
+      doc.css('img').first.attr(:src)
+    end
+
     def images_sitemap
       ha = []
       doc = Nokogiri::HTML(self.content)
