@@ -3,7 +3,7 @@
   <meta property="og:description" content="<%= @meta_description %>"> 
   <meta property="og:type" content="object"> 
   <meta property="og:url" content="<%= pages_url(@page)%>">
-  <meta property="og:image" content="<%= "#{request.protocol}#{request.host_with_port}#{@page.first_image_url}" %>">
+  <meta property="og:image" content="<%= @page.first_image_url %>">
   <meta property="og:site_name" content="Resume Companion">
   <meta property="fb:admins" content="100003747837559" />
 <% end %>

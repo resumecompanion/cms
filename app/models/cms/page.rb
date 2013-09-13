@@ -51,7 +51,7 @@ module Cms
 
     def first_image_url
       doc = Nokogiri::HTML(self.content)
-      doc.css('img').first.attr(:src)
+      doc.css('img').first.nil? ? "" : doc.css('img').first.attr(:src)
     end
 
     def images_sitemap
