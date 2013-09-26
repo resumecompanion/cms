@@ -31,6 +31,16 @@ module Cms
         end
       end
 
+      doc.css("div.popular-pages").each do  |dom|
+        dom['class'] = dom['class'] + " section"
+        list = "<ul>"
+        Page.five_most_popular.each do |page|
+          list = list + "<li>#{link_to page.title, pages_path(page) }</li>"
+        end
+        list += "</ul>"
+        dom << list
+      end
+
       doc.inner_html
     end
   end

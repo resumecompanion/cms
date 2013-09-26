@@ -1,6 +1,6 @@
 require 'cms/application_controller'
 module Cms
-  class PagesController < ApplicationController
+  class PagesController < Cms::ApplicationController
     def index
       url = get_setting("global:index") || "/"
       redirect_to url, :status => 301
@@ -14,9 +14,12 @@ module Cms
         return
       end
 
+
       if @page.is_published == false && !@page.redirect_path.blank?
         redirect_to @page.redirect_path, :status => :moved_permanently
       end
+
+      @page.increment_views_and_calculate_popularity
 
       @title = @page.title || get_setting("global:meta_title")
       @meta_title = @page.meta_title

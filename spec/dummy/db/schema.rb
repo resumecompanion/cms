@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805015142) do
+ActiveRecord::Schema.define(:version => 20130926015345) do
 
   create_table "cms_files", :force => true do |t|
     t.integer  "cms_user_id"
@@ -53,12 +53,15 @@ ActiveRecord::Schema.define(:version => 20130805015142) do
     t.datetime "updated_at",                           :null => false
     t.string   "meta_title"
     t.string   "redirect_path"
+    t.integer  "views",              :default => 0
+    t.float    "popularity",         :default => 0.0
   end
 
   add_index "cms_pages", ["author_id"], :name => "index_cms_pages_on_author_id"
   add_index "cms_pages", ["is_displayed_title"], :name => "index_cms_pages_on_is_displayed_title"
   add_index "cms_pages", ["is_published"], :name => "index_cms_pages_on_is_published"
   add_index "cms_pages", ["parent_id"], :name => "index_cms_pages_on_parent_id"
+  add_index "cms_pages", ["popularity"], :name => "index_cms_pages_on_popularity"
   add_index "cms_pages", ["sidebar_id"], :name => "index_cms_pages_on_sidebar_id"
   add_index "cms_pages", ["slug"], :name => "index_cms_pages_on_slug"
 

@@ -20,6 +20,8 @@ module Cms
     after_update :update_parent_child_count
     after_destroy :update_parent_child_count
 
+    scope :five_most_popular, lambda { where({}).limit(5).order("popularity DESC") }
+
     if respond_to?(:define_index)
       define_index do
         indexes title, :as => :title
@@ -43,6 +45,19 @@ module Cms
       end
 
       parent_ids_array.reverse
+    end
+
+    def increment_views_and_calculate_popularity
+      self.views = self.views + 1
+      self.popularity = self.views.to_f / days_since_creation.to_f
+      self.save
+      self
+    end
+
+    def days_since_creation
+      return 1 if created_at.nil?
+      days= (Time.now - created_at).to_i / (60 * 60 * 24)
+      days == 0 ? 1 : days
     end
 
     def level
