@@ -17,9 +17,9 @@ module Cms
 
       if @page.is_published == false && !@page.redirect_path.blank?
         redirect_to @page.redirect_path, :status => :moved_permanently
+      else
+        @page.increment_views_and_calculate_popularity
       end
-
-      @page.increment_views_and_calculate_popularity
 
       @title = @page.title || get_setting("global:meta_title")
       @meta_title = @page.meta_title
