@@ -19,17 +19,17 @@ gem 'thinking-sphinx', :require => "thinking_sphinx"
 gem 'mysql2'
 
 group :assets do
+end
   gem 'sass-rails',   '~> 3.2.0'
   gem 'compass-rails'
-end
 
 
 gem "rspec-rails"
+gem 'rmagick', '2.12.2'
 group :test, :cucumber do
   gem 'spork', '~> 1.0.0rc3'
   gem 'fuubar'
   gem 'factory_girl_rails'
-  gem 'rmagick', '2.12.2'
 end
 
 group :development do
