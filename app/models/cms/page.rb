@@ -22,11 +22,9 @@ module Cms
 
     scope :five_most_popular, lambda { where({}).limit(5).order("popularity DESC") }
 
-    if respond_to?(:define_index)
-      define_index do
-        indexes title, :as => :title
-        indexes content, :as => :content
-      end
+    define_index do
+      indexes title, :as => :title
+      indexes content, :as => :content
     end
 
     def to_param
