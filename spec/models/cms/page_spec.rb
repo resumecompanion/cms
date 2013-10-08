@@ -28,6 +28,12 @@ module Cms
       it 'should return the 5 most popular posts' do
         Page.five_most_popular.collect {|post| post.title }.should == ['test page 9', 'test page 8', 'test page 7', 'test page 6', 'test page 5']
       end
+
+      it 'should not return the home page' do
+        Cms::Setting.create key: "global:index", value: '/resume/test-page-8'
+
+        Page.five_most_popular.collect {|post| post.title }.should == ['test page 9', 'test page 7', 'test page 6', 'test page 5', 'test page 4']
+      end
     end
     
     describe '#increment_views_and_calculate_popularity' do

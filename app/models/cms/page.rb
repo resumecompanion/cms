@@ -20,7 +20,15 @@ module Cms
     after_update :update_parent_child_count
     after_destroy :update_parent_child_count
 
-    scope :five_most_popular, lambda { where({}).limit(5).order("popularity DESC") }
+    scope :five_most_popular, lambda {
+      home_page = Cms::Setting.find_by_key("global:index").try(:value)
+      if home_page.nil?
+        where({}).limit(5).order("popularity DESC")
+      else
+        slug = home_page.split('/').last.to_url
+        where("slug != ?", slug).limit(5).order("popularity DESC")
+      end
+    }
 
     define_index do
       indexes title, :as => :title
