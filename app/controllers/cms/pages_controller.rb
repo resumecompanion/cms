@@ -7,6 +7,7 @@ module Cms
     end
 
     def show
+      @home_path = get_setting("global:index")
       @page = Cms::Page.where(:slug => params[:id]).first
 
       if @page.blank? || (@page.is_published == false && @page.redirect_path.blank?)

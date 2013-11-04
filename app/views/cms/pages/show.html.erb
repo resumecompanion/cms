@@ -6,6 +6,10 @@
   <meta property="og:image" content="<%= @page.first_image_url %>">
   <meta property="og:site_name" content="Resume Companion">
   <meta property="fb:admins" content="100003747837559" />
+
+  <% if request.path == @home_path %>
+    <link rel="canonical" href="<%= request.url %>" />
+  <% end %>
 <% end %>
 <% if @page.is_displayed_title? %>
 <div class="default-title">
