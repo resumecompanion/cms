@@ -11,7 +11,7 @@ module Cms
       @page = Cms::Page.where(:slug => params[:id]).first
 
       if @page.blank? || (@page.is_published == false && @page.redirect_path.blank?)
-        render 'render_404', status: :not_found
+        redirect_to get_setting('global:index'), status: :moved_permanently
         return
       end
 
