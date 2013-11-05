@@ -1,5 +1,9 @@
 module Cms
   module ApplicationHelper
+    def disqus_shortname
+      Cms::Setting.find_by_key("global:disqus:shortname").try(:value)
+    end
+
     def render_cms_page_title(title)
      content_tag("title", title)
     end
