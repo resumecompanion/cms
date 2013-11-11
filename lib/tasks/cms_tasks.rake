@@ -1,5 +1,14 @@
 # -*- encoding : utf-8 -*-
 namespace :cms do
+  desc 'remove /posts/ from urls'
+  task remove_posts_from_url: :environment do
+    Cms::Page.find_each do |page| 
+      puts page.inspect
+      puts "changein page #{page.slug}"
+      page.update_attributes content: page.content.gsub(%r(/posts/), '/')
+    end
+  end
+  
 
   desc "Update child count" 
   task :update_child_count => :environment do
