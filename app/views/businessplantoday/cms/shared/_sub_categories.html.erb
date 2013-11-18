@@ -1,0 +1,21 @@
+<% case true %>
+  <% when @page.level == 2 && (@page.parent_id == 1 || @page.parent_id == 2) %>
+  <div class="sub-category">
+    <h3><%= @page.title.strip.capitalize %> <span>(Sorted A - Z)</span></h3>
+    <% @page.children.where(:is_published => true).order(:title).each do |child| %>
+    <ul>
+      <li><%= link_to child.title.strip.capitalize, cms.pages_path(child), :title => child.title %></li>
+    </ul>
+    <% end %>
+  </div>
+  <% when @page.level == 3 %>
+  <div class="sub-category">
+    <% parent = @page.parent %>
+    <h3>Other popular resume <%= parent.is_template_page? ? 'templates' : 'examples' %> in <%= link_to parent.title.strip.capitalize, pages_path(parent), :title => parent.title %></h3>
+    <% parent.sample_of_children(@page).each do |child| %>
+    <ul>
+      <li><%= link_to child.title.strip.capitalize, cms.pages_path(child), :title => child.title %></li>
+    </ul>
+    <% end %>
+  </div>
+<% end %>
