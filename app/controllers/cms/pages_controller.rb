@@ -1,6 +1,7 @@
 require 'cms/application_controller'
 module Cms
   class PagesController < Cms::ApplicationController
+    layout :set_layout
     def index
       url = get_setting("global:index") || "/"
       redirect_to url, :status => 301
