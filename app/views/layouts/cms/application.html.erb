@@ -9,9 +9,9 @@
 
   <% if Rails.env.production? || Rails.env.staging? %>
 
-  <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
   <script type="text/javascript">
-    new HelloBar(51615,72839);
+    console.log("GOT HERE")
+    HelloBar.initalize();
   </script>
 
   <% end %>
@@ -21,6 +21,7 @@
   <%= yield :header %>
 </head>
 <body>
+<%= render "shared/hellobar" %>
   <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

@@ -1,0 +1,86 @@
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/images";
+@import "compass/css3/text-shadow";
+
+#hellobar {
+  display:block;
+  position:fixed;
+  width:100%;
+  top:-33px;
+  left:0px;
+  z-index:5000;
+  height:33px;
+
+  #hellobar-container {
+    width: 100%;
+    height:33px;
+    line-height:33px;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color: #fff;
+    background: #ec3e1e;
+    text-align: center;
+    @include text-shadow(rgba(0,0, 0, 0.3) 1px 1px 0px);
+
+    .hellobar-link {
+      margin: 0 0 0 10px;
+      padding: 3px 13px 3px 25px;
+      color:#FFFFFF;
+      //font-weight: bold;
+      background:#000000 image-url("hellobar/arrow-right.png") 11px 7px no-repeat;
+      @include border-radius(10px);
+      text-decoration:none;
+
+      &:hover {
+        background:#333333 image-url("hellobar/arrow-right.png") 11px 7px no-repeat;
+      }
+    }
+  }
+
+  #hellobar-close {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    width: 18px;
+    height: 0;
+    overflow: hidden;
+    padding: 19px 0 0;
+    z-index: 10;
+    background: image-url("hellobar/arrow-up.png") no-repeat;
+
+    &:hover {
+      background: image-url("hellobar/arrow-up-hover.png") no-repeat;
+    }
+  }
+
+  #hellobar-shadow {
+    width:100%;
+    height:3px;
+    background: image-url("hellobar/shadow.png") 0 -2px repeat-x;
+  }
+}
+
+#hellobar-pusher {
+  height:0;
+  position: relative;
+}
+
+#hellobar-open {
+  display:block;
+  background:image-url("hellobar/arrow-down.png") no-repeat;
+  height: 0;
+  overflow: hidden;
+  padding: 60px 0 0;
+  position: fixed;
+  right: 8px;
+  top: -60px;
+  width: 50px;
+  z-index:5000;
+
+  &:hover {
+    background:image-url("hellobar/arrow-down-hover.png") no-repeat;
+  }
+}

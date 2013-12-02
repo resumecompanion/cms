@@ -15,4 +15,5 @@
  *= require cms/application/home
  *= require cms/application/sidebar
  *= require cms/application/popup_box
+ *= require cms/application/hellobar
 */
