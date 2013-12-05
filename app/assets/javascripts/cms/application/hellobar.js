@@ -2,7 +2,11 @@ var Hellobar = {
   initialize: function(){
     var self = this;
 
-    self.showHellobar();
+    if(self.getCookie('hellobar_show') == 'false') {
+      self.showOpenButton();
+    } else {
+      self.showHellobar();
+    }
 
     $(document).on("click", "#hellobar-close", function(e){
       e.preventDefault();
@@ -12,6 +16,8 @@ var Hellobar = {
       ).then(
         self.showOpenButton()
       );
+
+      document.cookie="hellobar_show=false;path=/";
     });
 
     $(document).on("click", "#hellobar-open", function(e){
@@ -22,6 +28,8 @@ var Hellobar = {
       ).then(
         self.showHellobar()
       )
+
+      document.cookie="hellobar_show=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
     });
 
   },
@@ -40,5 +48,17 @@ var Hellobar = {
 
   hideOpenButton: function() {
     $("#hellobar-open").animate({ top: '-60px' }, {duration: 300, easing: 'easeInOutQuint'} );
+  },
+
+  getCookie: function(c_name) {
+    var i, x, y, ARRcookies = document.cookie.split(";");
+    for (i = 0; i < ARRcookies.length; i++) {
+        x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+        y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+        x = x.replace(/^\s+|\s+$/g, "");
+        if (x == c_name) {
+            return unescape(y);
+        }
+    }
   }
 }
