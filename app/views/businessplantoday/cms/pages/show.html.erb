@@ -10,6 +10,10 @@
   <% if request.path == @home_path %>
     <link rel="canonical" href="<%= request.url %>" />
   <% end %>
+
+  <% if @page.no_index %>
+    <meta name="googlebot" content="noindex">
+  <% end %>
 <% end %>
 <% if @page.is_displayed_title? %>
 <div class="default-title">
