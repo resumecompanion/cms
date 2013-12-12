@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+  <%= render_cms_page_title(@meta_title || @title) %>
+  <%= render_cms_meta_description(@meta_description) %>
+  <%= render_cms_meta_keywords(@meta_keywords) %>
+  <%= stylesheet_link_tag    "cms/resumegenius", :media => "all" %>
+  <%= javascript_include_tag "cms/application" %>
+
+  <% if Rails.env.production? || Rails.env.staging? %>
+
+  <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+  <script type="text/javascript">
+    new HelloBar(51615,72839);
+  </script>
+
+  <% end %>
+
+  <%= csrf_meta_tags %>
+  <%# render_canonical_url(@canonical_url) %>
+  <%= yield :header %>
+</head>
+<body>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <% if cms_user_signed_in? && current_cms_user.is_admin? %>
+  <div id="admin-bar">
+    <%= link_to "Manage Your CMS", cms.admin_users_path, :class => "admin-button" %>
+    <%= link_to "Logout", cms.destroy_cms_user_session_path, :class => "logout-button" %>
+  </div>
+  <% end %>
+  <div id="header" class="clearfix">
+    <div class="container">
+      <%= link_to "Logo", global_index, :id => "logo" %>
+      <div class="navigation" clearfix>
+        <% Cms::Navigation.where(:is_hidden => false).order(:position).each do |navigation| %>
+          <%= link_to navigation.name, navigation.link, :class => "#{navigation_selected?(navigation, @page) if @page.present?}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div id="header">
+    <div class="content">
+      <%= link_to "Logo", global_index, :id => "logo" %>
+      <p id="website-description">
+        Your career starts here
+      </p>
+      <div id="google-search-bar">
+        <gcse:searchbox-only></gcse:searchbox-only>
+      </div>
+    </div>
+  </div>
+
+  <div id="navigation">
+    <ul>
+      <% Cms::Navigation.where(:is_hidden => false).order(:position).each do |navigation| %>
+        <li>
+          <%= link_to navigation.name, navigation.link, :class => "#{navigation_selected?(navigation, @page) if @page.present?}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+-->
+  <div id="container">
+    <div id="main">
+
+      <%= render "cms/shared/breadcrumb" if @page.present? && @page.parent_id.present? %>
+
+      <%= render "cms/shared/social_buttons" if @page.present? %>
+
+      <%= yield %>
+
+      <%= render "cms/shared/social_buttons" if @page.present? %>
+      <%= render 'cms/pages/disqus' %>
+      <%= render "cms/shared/sub_categories" if @page.present? %>
+    </div>
+
+    <% if @page.present? %>
+    <div id="sidebar">
+      <%=raw convert_macro(@page.sidebar.try(:content)) %>
+    </div>
+    <% end %>
+
+    <%= yield :search_result %>
+
+    <div class="clear-all"></div>
+  </div>
+    <%= render "cms/shared/footer" %>
+
+  <%#= render "cms/shared/popup_box" %>
+
+  <%= render "cms/shared/google_search" %>
+  <%= render "cms/shared/google_analytics" if Rails.env.production? %>
+</body>
+</html>

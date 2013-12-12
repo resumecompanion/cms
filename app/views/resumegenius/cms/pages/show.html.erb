@@ -1,0 +1,30 @@
+<% content_for :header do %>
+  <meta property="og:title" content="<%= @meta_title || @title %>"> 
+  <meta property="og:description" content="<%= @meta_description %>"> 
+  <meta property="og:type" content="object"> 
+  <meta property="og:url" content="<%= pages_url(@page)%>">
+  <meta property="og:image" content="<%= @page.first_image_url %>">
+  <meta property="og:site_name" content="Resume Companion">
+  <meta property="fb:admins" content="100003747837559" />
+
+  <% if request.path == @home_path %>
+    <link rel="canonical" href="<%= request.url %>" />
+  <% end %>
+
+  <% if @page.no_index %>
+    <meta name="googlebot" content="noindex">
+  <% end %>
+<% end %>
+<% if @page.is_displayed_title? %>
+<div class="default-title">
+  <h1><%= @page.title %></h1>
+</div>
+<% end %>
+<div class="content">
+  <%=raw convert_macro(@page.content) %>
+</div>
+<!--
+<a class="free-resume-builder-banner" href="http://resumecompanion.com" title="Free Resume Builder">Free Resume Builder</a>
+-->
+
+
