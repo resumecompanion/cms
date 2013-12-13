@@ -9,7 +9,7 @@ module Cms
     end
     
     initializer "cms.precompile_assets" do |app|
-      app.config.assets.precompile += %w( cms/application.js, cms/resumegenius.css cms/resumecompanion.css  cms/businessplantoday.css cms/admin.js cms/admin.css )
+      app.config.assets.precompile += %w( cms/application.js, cms/application.css cms/resumegenius.css cms/resumecompanion.css  cms/businessplantoday.css cms/admin.js cms/admin.css )
       app.config.assets.precompile += %w( cms/plugin/ckeditor/init.js cms/plugin/ckeditor/*)
     end
 
