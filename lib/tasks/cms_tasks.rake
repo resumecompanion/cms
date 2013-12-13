@@ -83,43 +83,84 @@ namespace :cms do
 
   desc "create default data"
   task :seed => :environment do
-    user = Cms::User.new(:nickname => "admin", :email => "admin@resumecompanion.com", :password => "123456", :password_confirmation => "123456")
-    user.is_admin = true
-    user.save
+    if I18n.default_locale == 'en-RC'.to_sym
+      user = Cms::User.new(:nickname => "admin", :email => "admin@resumecompanion.com", :password => "123456", :password_confirmation => "123456")
+      user.is_admin = true
+      user.save
 
-    puts "create admim"
+      puts "create admim"
 
-    navigation = Cms::Navigation.create(:name => "Home", :link => "/resume", :link_title => "Home", :is_hidden => false, :position => 1)
-    navigation = Cms::Navigation.create(:name => "Resume Companion", :link => "/resume/resume-examples", :link_title => "Home", :is_hidden => false, :position => 2)
-    navigation = Cms::Navigation.create(:name => "About Resume Companion", :link => "/resume/about-resume-companion", :link_title => "Home", :is_hidden => false, :position => 3)
+      navigation = Cms::Navigation.create(:name => "Home", :link => "/resume", :link_title => "Home", :is_hidden => false, :position => 1)
+      navigation = Cms::Navigation.create(:name => "Resume Companion", :link => "/resume/resume-examples", :link_title => "Home", :is_hidden => false, :position => 2)
+      navigation = Cms::Navigation.create(:name => "About Resume Companion", :link => "/resume/about-resume-companion", :link_title => "Home", :is_hidden => false, :position => 3)
 
-    puts "create navigations"
+      puts "create navigations"
 
-    setting = Cms::Setting.create(:key => "global:website_title", :value => "ResumeCompanion", :description => "This will be your website name")
-    setting = Cms::Setting.create(:key => "global:index", :value => "/resume/home", :description => "This is a path you want to be index page")
-    setting = Cms::Setting.create(:key => "global:meta_title", :value => "ResumeCompanion CMS", :description => "This is default title if we can't find tilte")
-    setting = Cms::Setting.create(:key => "global:meta_description", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
-    setting = Cms::Setting.create(:key => "global:meta_keywords", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
-    setting = Cms::Setting.create(:key => "global:ga_account", :value => "UA-513849-6", :description => "This is GA account")
+      setting = Cms::Setting.create(:key => "global:website_title", :value => "ResumeCompanion", :description => "This will be your website name")
+      setting = Cms::Setting.create(:key => "global:index", :value => "/resume/home", :description => "This is a path you want to be index page")
+      setting = Cms::Setting.create(:key => "global:meta_title", :value => "ResumeCompanion CMS", :description => "This is default title if we can't find tilte")
+      setting = Cms::Setting.create(:key => "global:meta_description", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
+      setting = Cms::Setting.create(:key => "global:meta_keywords", :value => "ResumeCompanion CMS", :description => "This is default meta description if we can't find meta description")
+      setting = Cms::Setting.create(:key => "global:ga_account", :value => "UA-513849-6", :description => "This is GA account")
 
-    puts "create settings"
+      puts "create settings"
 
-    sidebar = Cms::Sidebar.new
-    sidebar.name = "default sidebar"
-    sidebar.content = '
-    <div class="banner">
-      Your Can add banner here
-    </div>
+      sidebar = Cms::Sidebar.new
+      sidebar.name = "default sidebar"
+      sidebar.content = '
+      <div class="banner">
+        Your Can add banner here
+      </div>
 
-    <div class="links">
-      <ul>
-        <li>You can add link here</li>
-      </ul>
-    </div>
-    '
-    sidebar.save
+      <div class="links">
+        <ul>
+          <li>You can add link here</li>
+        </ul>
+      </div>
+      '
+      sidebar.save
 
-    puts "create sidebar"
+      puts "create sidebar"
+    elsif I18n.default_locale == 'en-RG'.to_sym
+      user = Cms::User.new(:nickname => "admin", :email => "admin@resumecompanion.com", :password => "123456", :password_confirmation => "123456")
+      user.is_admin = true
+      user.save
+
+      puts "create admim"
+
+      navigation = Cms::Navigation.create(:name => "Home", :link => "/resume", :link_title => "Home", :is_hidden => false, :position => 1)
+      navigation = Cms::Navigation.create(:name => "Resume Companion", :link => "/resume/resume-examples", :link_title => "Home", :is_hidden => false, :position => 2)
+      navigation = Cms::Navigation.create(:name => "About Resume Genius", :link => "/resume/about-resume-genius", :link_title => "Home", :is_hidden => false, :position => 3)
+
+      puts "create navigations"
+
+      setting = Cms::Setting.create(:key => "global:website_title", :value => "ResumeGenius", :description => "This will be your website name")
+      setting = Cms::Setting.create(:key => "global:index", :value => "/resume/home", :description => "This is a path you want to be index page")
+      setting = Cms::Setting.create(:key => "global:meta_title", :value => "ResumeGenius CMS", :description => "This is default title if we can't find tilte")
+      setting = Cms::Setting.create(:key => "global:meta_description", :value => "ResumeGenius CMS", :description => "This is default meta description if we can't find meta description")
+      setting = Cms::Setting.create(:key => "global:meta_keywords", :value => "ResumeGenius CMS", :description => "This is default meta description if we can't find meta description")
+      setting = Cms::Setting.create(:key => "global:ga_account", :value => "UA-513849-6", :description => "This is GA account")
+      setting = Cms::Setting.create(:key => "global:theme", :value => "resumegenius", :description => "This is Theme")
+
+      puts "create settings"
+
+      sidebar = Cms::Sidebar.new
+      sidebar.name = "default sidebar"
+      sidebar.content = '
+      <div class="banner">
+        Your Can add banner here
+      </div>
+
+      <div class="links">
+        <ul>
+          <li>You can add link here</li>
+        </ul>
+      </div>
+      '
+      sidebar.save
+
+      puts "create sidebar"
+    end
   end
 
   task :meta_title => :environment do
@@ -311,4 +352,5 @@ namespace :cms do
       page.save
     end
   end
+
 end
