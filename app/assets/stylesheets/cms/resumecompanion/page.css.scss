@@ -1,35 +1,84 @@
 #main {
   font-size:14px;
-  line-height:25px;
+  line-height:1.5em;
 
-  h1 {
-    font-size: 2em;
-    font-weight:bold;
+  b, strong {
+    font-weight: bold;
   }
 
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+  }
+  h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 36px;
+  }
   h2 {
-    font-size: 1.5em;
-    font-weight:bold;
+    font-size: 30px;
   }
 
   h3 {
-    font-size: 1.17em;
-    font-weight:bold;
+    font-size: 24px;
   }
 
   h4 {
-    font-size: 1em;
-    font-weight:bold;
+    font-size: 18px;
   }
 
   h5 {
-    font-size: 0.83em;
-    font-weight:bold;
+    font-size: 14px;
   }
 
   h6 {
-    font-size: 0.75em;
-    font-weight:bold;
+    font-size: 12px;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  blockquote {
+    margin-bottom:20px;
+    padding-left:80px;
+    font-size:17px;
+    line-height:25px;
+    font-style:italic;
+    color:#9c9c9c;
+    background: image-url("blog/resumecompanion/quote.png") 0 0 no-repeat;
+    span {
+      color:#3791cf;
+    }
+  }
+
+  p {
+    margin: 0 0 10px;
+    span {
+      line-height: 1em;
+    }
+  }
+
+  .details {
+    margin-bottom:10px;
+    height:50px;
+    font-size:11px;
+    font-style:italic;
+    color:#999999;
+
+    .posted-at, .author {
+      margin-right:5px;
+    }
+
+    #social-buttons {
+      margin-top:15px;
+      margin-bottom:20px;
+    }
   }
 
   #body_content_title {

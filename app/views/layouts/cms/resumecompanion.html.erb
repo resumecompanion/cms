@@ -38,7 +38,11 @@
   <% end %>
   <div id="header">
     <div class="content">
-      <%= link_to "Logo", global_index, :id => "logo" %>
+      <span itemscope="" itemtype="http://schema.org/Organization" class="logo">
+        <a itemprop="url" href="http://resumecompanion.com/">
+          <%= image_tag('cms/resumecompanion/cms-logo.png', alt: 'Create a Resume Online - Resume Companion', itemprop: "logo") %>
+        </a>
+      </span>
       <p id="website-description">
         Your career starts here
       </p>
