@@ -41,7 +41,7 @@ module Cms
         dom << list
       end
 
-      doc.inner_html.gsub('search', 'gcse:search')
+      doc.inner_html.gsub('search>', 'gcse:search>')
     end
   end
 end
