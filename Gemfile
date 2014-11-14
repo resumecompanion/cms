@@ -25,7 +25,7 @@ end
 
 
 gem "rspec-rails"
-gem 'rmagick', '2.12.2'
+gem 'mini_magick'
 group :test, :cucumber do
   gem 'spork', '~> 1.0.0rc3'
   gem 'fuubar'
