@@ -6,12 +6,16 @@
     <li><a href="/product-features">Product Features</a></li>
     <li><a href="/terms-of-use">Terms &amp; Conditions</a></li>
     <li><a href="/privacy-policy">Privacy Policy</a></li>
-    <li style="border-color:transparent;"><a href="/affiliate_program">Affiliate Program</a></li>
+    <% if I18n.locale == :'en-RC' %>
+      <li style="border-color:transparent;"><a href="/affiliate_program">Affiliate Program</a></li>
+    <% end %>
   </ul>
   <ul id="nav-footer">
     <li><a href="/resume-builder-edu">Resumes For America</a></li>
     <li><a href="/blog">Blog</a></li>
-    <li style="border-color:transparent;"><a href="/scholarship">Scholarship</a></li>
+    <% if I18n.locale == :'en-RC' %>
+      <li style="border-color:transparent;"><a href="/scholarship">Scholarship</a></li>
+    <% end %>
   </ul>
     <ul id="nav-social">
       <script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
