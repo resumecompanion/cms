@@ -5,14 +5,14 @@
     <li><a href="/resume-resources">Free Resources</a></li>
     <li><a href="/product-features">Product Features</a></li>
     <li><a href="/terms-of-use">Terms &amp; Conditions</a></li>
-    <li><a href="/privacy-policy">Privacy Policy</a></li>
+    <li><a href="/privacy-policy" <%= 'style="border-color:transparent;"'.html_safe  %>>Privacy Policy</a></li>
     <% if I18n.locale == :'en-RC' %>
       <li style="border-color:transparent;"><a href="/affiliate_program">Affiliate Program</a></li>
     <% end %>
   </ul>
   <ul id="nav-footer">
     <li><a href="/resume-builder-edu">Resumes For America</a></li>
-    <li><a href="/blog">Blog</a></li>
+    <li><a href="/blog" <%= 'style="border-color:transparent;"'.html_safe  %>>Blog</a></li>
     <% if I18n.locale == :'en-RC' %>
       <li style="border-color:transparent;"><a href="/scholarship">Scholarship</a></li>
     <% end %>
