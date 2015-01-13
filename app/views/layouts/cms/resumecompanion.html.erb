@@ -10,7 +10,6 @@
   <% if Rails.env.production? || Rails.env.staging? %>
 
   <script type="text/javascript">
-    console.log("GOT HERE")
     HelloBar.initalize();
   </script>
 
@@ -39,7 +38,11 @@
   <div id="header">
     <div class="content">
       <span itemscope="" itemtype="http://schema.org/Organization" class="logo">
-        <a itemprop="url" href="http://resumecompanion.com/">
+        <% if I18n.locale == :'en-RC' %>
+          <a itemprop="url" href="http://resumecompanion.com/">
+        <% else %>
+          <a itemprop="url" href="http://resumecompanion.us/">
+        <% end %>
           <%= image_tag('cms/resumecompanion/cms-logo.png', alt: 'Create a Resume Online - Resume Companion', itemprop: "logo") %>
         </a>
       </span>
