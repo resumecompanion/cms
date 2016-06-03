@@ -1,6 +1,6 @@
 require 'devise'
 require 'simple_form'
-require 'compass-rails'
+# require 'compass-rails'
 require 'carrierwave'
 require 'fog'
 require 'stringex'
