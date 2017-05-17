@@ -10,14 +10,4 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require cms/plugin/jquery.fancybox-1.3.4
-//= require cms/plugin/jquery.easing.1.3
-//= require cms/application/hellobar
-//= require cms/application/open_remote_links_in_new_tab
 
-
-$(function() {
-  Hellobar.initialize()
-})
