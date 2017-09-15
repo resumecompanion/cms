@@ -13,7 +13,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'stringex'
 gem 'kaminari'
-gem 'thinking-sphinx', '~> 2.0', :require => "thinking_sphinx"
+gem 'thinking-sphinx', '~> 3.0', :require => "thinking_sphinx"
 
 
 gem 'mysql2'
